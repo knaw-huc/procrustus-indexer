@@ -1,7 +1,7 @@
 # procrustus-indexer
 Python app for indexing HuC datasets
 
-This is a first version, for indexing XML files. 
+This is a first experimental version, for indexing XML files. 
 
 Modules will be added for:
 * Relational databases (MySQL, Postgres)

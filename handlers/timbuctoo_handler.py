@@ -11,7 +11,7 @@ class Timbuctoo_handler:
             self.dataset = self.model["data"]["dataset"]["id"]
             self.server = self.model["data"]["datasource"]["properties"]["server"]
             self.port =self.model["data"]["datasource"]["properties"]["port"]
-            self.auth = self.model["data"]["datasource"]["properties"]["user"]
+            self.user = self.model["data"]["datasource"]["properties"]["user"]
         except:
             print("No dataset properties defined")
             os._exit()

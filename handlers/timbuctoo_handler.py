@@ -2,6 +2,7 @@ from elasticsearch import Elasticsearch
 from indexer import Indexer
 from queries import timbuctoo_queries
 import os
+import requests
 
 class Timbuctoo_handler:
     def __init__(self, model):
@@ -17,11 +18,17 @@ class Timbuctoo_handler:
             os._exit()
 
     def fetch_data(self, query):
-        pass
+        params = {"query": query}
+        return requests.post(self.server, json = params, headers = {"Authorization": "13797e06-9999-43f3-be83-b27e6cf8c6fc",
+                                                                    'Content-Type': 'application/json',
+                                                                    "VRE_ID": self.dataset})
 
     def create_index(self):
-        query = self.qb.get_collections(self.dataset)
-        print(self.server)
+        #query = self.qb.get_collections(self.dataset)
+        query = self.qb.get_basic_collection_items(self.dataset, "schema_PersonList")
+        collections = self.fetch_data(query)
+        print(collections.text)
+
 
 
 

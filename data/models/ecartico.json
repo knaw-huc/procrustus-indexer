@@ -11,7 +11,7 @@
       "type": "Timbuctoo",
       "mode": "R",
       "properties": {
-        "server": "https://repository.goldenagents.org/v5",
+        "server": "https://repository.goldenagents.org/v5/graphql",
         "port": "80",
         "user": "fake"
       }

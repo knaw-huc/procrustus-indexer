@@ -6,6 +6,6 @@ class Indexer:
         self.es = Elasticsearch([{"host": self.config["url"], "port": self.config["port"]}])
 
     def add_to_index(self, data):
-        result = self.es.index(index = self.config["doc_type"], body = data)
+        result = self.es.index(index = self.config["index"], body = data)
         print(result['result'])
 

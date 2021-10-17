@@ -81,7 +81,7 @@ fields = {
 config = {
     "url" : "localhost",
     "port" : "9200",
-    "doc_type" : "manuscripts"
+    "index" : "manuscripts"
 }
 
 indexer = Indexer(config)

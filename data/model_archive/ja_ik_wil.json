@@ -1,0 +1,3034 @@
+{
+  "metadata": {
+    "title": "Ja, ik wil Browser",
+    "description": "Ja, ik wil",
+    "project": "Golden Agents",
+    "author": "Rob Zeeman",
+    "date": "2021-10-12"
+  },
+  "data": {
+    "datasource": {
+      "type": "Timbuctoo",
+      "mode": "R",
+      "properties": {
+        "server": "https:\/\/repository.goldenagents.org\/v5",
+        "port": "80",
+        "user": "fake"
+      }
+    },
+    "dataset": {
+      "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712",
+      "name": "",
+      "title": "",
+      "entities": [
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation",
+          "name": "roar_Occupation",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "skos_prefLabelList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "skos_prefLabelList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "skos_prefLabelList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdf_typeList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown_List"
+              },
+              "display": {
+                "label": "rdf_typeList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdf_typeList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsOccupation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsOccupation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsOccupation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "ns1_wasDerivedFromList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation___List"
+              },
+              "display": {
+                "label": "ns1_wasDerivedFromList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "ns1_wasDerivedFromList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_ns1_wasDerivedFrom",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__"
+              },
+              "display": {
+                "label": "_inverse_ns1_wasDerivedFrom",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_ns1_wasDerivedFrom",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "owl_sameAs",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Occupation"
+              },
+              "display": {
+                "label": "owl_sameAs",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "owl_sameAs",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument",
+          "name": "roar_IndexDocument",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsReligionList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Religion_List"
+              },
+              "display": {
+                "label": "roar_mentionsReligionList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsReligionList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_comment",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_comment",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_comment",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_cancelled",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_boolean"
+              },
+              "display": {
+                "label": "roar_cancelled",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_cancelled",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_indexOf",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_https___data_goldenagents_org_thesaurus_Ondertrouwregister"
+              },
+              "display": {
+                "label": "roar_indexOf",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_indexOf",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_memberOf",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_memberOf",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_memberOf",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsRelationList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relation_List"
+              },
+              "display": {
+                "label": "roar_mentionsRelationList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsRelationList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsOccupationList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation___List"
+              },
+              "display": {
+                "label": "roar_mentionsOccupationList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsOccupationList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasMember",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "_inverse_roar_hasMember",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasMember",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsPersonList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person_List"
+              },
+              "display": {
+                "label": "roar_mentionsPersonList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsPersonList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsEvent",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_mentionsEvent",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsEvent",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsStatusList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown_List"
+              },
+              "display": {
+                "label": "roar_mentionsStatusList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsStatusList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_mentionsLocationList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location___List"
+              },
+              "display": {
+                "label": "roar_mentionsLocationList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_mentionsLocationList",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion",
+          "name": "roar_PersonReligion",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasReligion",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasReligion",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasReligion",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Religion"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereMan",
+          "name": "roar_EerdereMan",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereVrouw",
+          "name": "roar_EerdereVrouw",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Religion",
+          "name": "roar_Religion",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsReligion",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsReligion",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsReligion",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep",
+          "name": "roar_Beroep",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasOccupation",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasOccupation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasOccupation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat",
+          "name": "roar_HuwelijkseStaat",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasStatus",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasStatus",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasStatus",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_pnv_PersonName",
+          "name": "pnv_PersonName",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "pnv_givenName",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "pnv_givenName",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "pnv_givenName",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_pnv_hasName",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "_inverse_pnv_hasName",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_pnv_hasName",
+                "root_index": []
+              }
+            },
+            {
+              "name": "pnv_baseSurname",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "pnv_baseSurname",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "pnv_baseSurname",
+                "root_index": []
+              }
+            },
+            {
+              "name": "pnv_literalName",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "pnv_literalName",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "pnv_literalName",
+                "root_index": []
+              }
+            },
+            {
+              "name": "pnv_surnamePrefix",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "pnv_surnamePrefix",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "pnv_surnamePrefix",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation",
+          "name": "roar_Observation",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdf_typeList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown_List"
+              },
+              "display": {
+                "label": "rdf_typeList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdf_typeList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsOccupation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsOccupation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsOccupation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsLocation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsLocation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsLocation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_ns1_wasDerivedFrom",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__"
+              },
+              "display": {
+                "label": "_inverse_ns1_wasDerivedFrom",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_ns1_wasDerivedFrom",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving__"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location",
+          "name": "roar_Location",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "skos_prefLabelList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "skos_prefLabelList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "skos_prefLabelList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdf_typeList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown_List"
+              },
+              "display": {
+                "label": "rdf_typeList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdf_typeList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "ns1_wasDerivedFromList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location___List"
+              },
+              "display": {
+                "label": "ns1_wasDerivedFromList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "ns1_wasDerivedFromList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsLocation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsLocation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsLocation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_ns1_wasDerivedFrom",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__"
+              },
+              "display": {
+                "label": "_inverse_ns1_wasDerivedFrom",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_ns1_wasDerivedFrom",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving__"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "owl_sameAs",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Place"
+              },
+              "display": {
+                "label": "owl_sameAs",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "owl_sameAs",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid",
+          "name": "roar_Bruid",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasStatus",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat"
+              },
+              "display": {
+                "label": "roar_hasStatus",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasStatus",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_age",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_integer"
+              },
+              "display": {
+                "label": "roar_age",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_age",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasRelation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving"
+              },
+              "display": {
+                "label": "roar_hasRelation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasRelation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasLocationList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving___List"
+              },
+              "display": {
+                "label": "roar_hasLocationList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasLocationList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasReligion",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion"
+              },
+              "display": {
+                "label": "roar_hasReligion",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasReligion",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_literate",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_boolean"
+              },
+              "display": {
+                "label": "roar_literate",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_literate",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasOccupation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep"
+              },
+              "display": {
+                "label": "roar_hasOccupation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasOccupation",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom",
+          "name": "roar_Bruidegom",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasStatus",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat"
+              },
+              "display": {
+                "label": "roar_hasStatus",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasStatus",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_age",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_integer"
+              },
+              "display": {
+                "label": "roar_age",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_age",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasRelation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving"
+              },
+              "display": {
+                "label": "roar_hasRelation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasRelation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasLocationList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving___List"
+              },
+              "display": {
+                "label": "roar_hasLocationList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasLocationList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasReligion",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion"
+              },
+              "display": {
+                "label": "roar_hasReligion",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasReligion",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_literate",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_boolean"
+              },
+              "display": {
+                "label": "roar_literate",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_literate",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasOccupation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep"
+              },
+              "display": {
+                "label": "roar_hasOccupation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasOccupation",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Occupation",
+          "name": "schema_Occupation",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_owl_sameAs",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__"
+              },
+              "display": {
+                "label": "_inverse_owl_sameAs",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_owl_sameAs",
+                "root_index": []
+              }
+            },
+            {
+              "name": "schema_occupationalCategory",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "schema_occupationalCategory",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "schema_occupationalCategory",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_labelList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "rdfs_labelList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_labelList",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_https___data_goldenagents_org_thesaurus_Ondertrouwregister",
+          "name": "https___data_goldenagents_org_thesaurus_Ondertrouwregister",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_partOf",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_partOf",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_partOf",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_createdIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "roar_createdIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_createdIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_indexOfList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument_List"
+              },
+              "display": {
+                "label": "_inverse_roar_indexOfList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_indexOfList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_createdAt",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "roar_createdAt",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_createdAt",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving",
+          "name": "roar_Adresomschrijving",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasLocation",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasLocation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasLocation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving",
+          "name": "roar_Herkomstomschrijving",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasLocation",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasLocation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasLocation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_void_Dataset",
+          "name": "void_Dataset",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "void_sparqlEndpoint",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "void_sparqlEndpoint",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "void_sparqlEndpoint",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_contributorList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "dcterms_contributorList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_contributorList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_description",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "dcterms_description",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_description",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_provenance",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "dcterms_provenance",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_provenance",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_publisher",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "dcterms_publisher",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_publisher",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_title",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "dcterms_title",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_title",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_license",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "dcterms_license",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_license",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_created",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_datetime"
+              },
+              "display": {
+                "label": "dcterms_created",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_created",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_creator",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "dcterms_creator",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_creator",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person",
+          "name": "roar_Person",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "pnv_hasName",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_pnv_PersonName"
+              },
+              "display": {
+                "label": "pnv_hasName",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "pnv_hasName",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_participatesIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_participatesIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_participatesIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Getuige__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereVrouw__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereMan__"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsPerson",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsPerson",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsPerson",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relation",
+          "name": "roar_Relation",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsRelation",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsRelation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsRelation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Getuige",
+          "name": "roar_Getuige",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_relatedTo",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving"
+              },
+              "display": {
+                "label": "_inverse_roar_relatedTo",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_relatedTo",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving",
+          "name": "roar_Relatieomschrijving",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_relatedTo",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Getuige"
+              },
+              "display": {
+                "label": "roar_relatedTo",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_relatedTo",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_hasRelation",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__"
+              },
+              "display": {
+                "label": "_inverse_roar_hasRelation",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_hasRelation",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedIn",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "roar_carriedIn",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedIn",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_carriedBy",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relation"
+              },
+              "display": {
+                "label": "roar_carriedBy",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_carriedBy",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_label",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_rdf_langString"
+              },
+              "display": {
+                "label": "rdfs_label",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_label",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Place",
+          "name": "schema_Place",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_owl_sameAs",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__"
+              },
+              "display": {
+                "label": "_inverse_owl_sameAs",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_owl_sameAs",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdfs_labelList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "rdfs_labelList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdfs_labelList",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown",
+          "name": "tim_unknown",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_partOfList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_https___data_goldenagents_org_thesaurus_Ondertrouwregister_List"
+              },
+              "display": {
+                "label": "_inverse_roar_partOfList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_partOfList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_dcterms_license",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_void_Dataset"
+              },
+              "display": {
+                "label": "_inverse_dcterms_license",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_dcterms_license",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_schema_occupationalCategoryList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Occupation_List"
+              },
+              "display": {
+                "label": "_inverse_schema_occupationalCategoryList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_schema_occupationalCategoryList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "schema_ContactPoint",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "schema_ContactPoint",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "schema_ContactPoint",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsEventList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument_List"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsEventList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsEventList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_description",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_https___daringfireball_net_projects_markdown_syntax__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string__"
+              },
+              "display": {
+                "label": "dcterms_description",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_description",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_rightsHolder",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "dcterms_rightsHolder",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_rightsHolder",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_provenance",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "dcterms_provenance",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_provenance",
+                "root_index": []
+              }
+            },
+            {
+              "name": "roar_hasMemberList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument_List"
+              },
+              "display": {
+                "label": "roar_hasMemberList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "roar_hasMemberList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedInList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Getuige__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereVrouw__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereMan__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving___List"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedInList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedInList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_dcterms_provenance",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_void_Dataset__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown__"
+              },
+              "display": {
+                "label": "_inverse_dcterms_provenance",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_dcterms_provenance",
+                "root_index": []
+              }
+            },
+            {
+              "name": "dcterms_title",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "dcterms_title",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "dcterms_title",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_rdf_typeList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruidegom__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Bruid__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_https___data_goldenagents_org_thesaurus_Ondertrouwregister__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereVrouw__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_PersonReligion__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_EerdereMan__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_void_Dataset__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Herkomstomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Adresomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Getuige__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Place__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Beroep__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Religion__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Relatieomschrijving__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_pnv_PersonName___List"
+              },
+              "display": {
+                "label": "_inverse_rdf_typeList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_rdf_typeList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_schema_ContactPoint",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "_inverse_schema_ContactPoint",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_schema_ContactPoint",
+                "root_index": []
+              }
+            },
+            {
+              "name": "schema_email",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "schema_email",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "schema_email",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_participatesInList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Person_List"
+              },
+              "display": {
+                "label": "_inverse_roar_participatesInList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_participatesInList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_carriedByList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_HuwelijkseStaat_List"
+              },
+              "display": {
+                "label": "_inverse_roar_carriedByList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_carriedByList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_memberOfList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument_List"
+              },
+              "display": {
+                "label": "_inverse_roar_memberOfList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_memberOfList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_roar_mentionsStatusList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_IndexDocument_List"
+              },
+              "display": {
+                "label": "_inverse_roar_mentionsStatusList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_roar_mentionsStatusList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "schema_name",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string"
+              },
+              "display": {
+                "label": "schema_name",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "schema_name",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_void_sparqlEndpoint",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_void_Dataset"
+              },
+              "display": {
+                "label": "_inverse_void_sparqlEndpoint",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_void_sparqlEndpoint",
+                "root_index": []
+              }
+            },
+            {
+              "name": "_inverse_dcterms_rightsHolder",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown"
+              },
+              "display": {
+                "label": "_inverse_dcterms_rightsHolder",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "_inverse_dcterms_rightsHolder",
+                "root_index": []
+              }
+            }
+          ]
+        },
+        {
+          "id": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Reconstruction",
+          "name": "roar_Reconstruction",
+          "is_root": "no",
+          "notions": [
+            {
+              "name": "uri",
+              "type": {
+                "name": null
+              },
+              "display": {
+                "label": "uri",
+                "hyperlink": "timbuctoo_uri",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "yes",
+                "index_field_name": "uri",
+                "root_index": []
+              }
+            },
+            {
+              "name": "skos_prefLabelList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_value_xsd_string_List"
+              },
+              "display": {
+                "label": "skos_prefLabelList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "skos_prefLabelList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "rdf_typeList",
+              "type": {
+                "name": "ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_tim_unknown_List"
+              },
+              "display": {
+                "label": "rdf_typeList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "rdf_typeList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "ns1_wasDerivedFromList",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Occupation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Observation__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_roar_Location___List"
+              },
+              "display": {
+                "label": "ns1_wasDerivedFromList",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "ns1_wasDerivedFromList",
+                "root_index": []
+              }
+            },
+            {
+              "name": "owl_sameAs",
+              "type": {
+                "name": "Union_ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Place__ufab7d657a250e3461361c982ce9b38f3816e0c4b__ja_ik_wil_20210712_schema_Occupation__"
+              },
+              "display": {
+                "label": "owl_sameAs",
+                "hyperlink": "none",
+                "order": 9999
+              },
+              "index": {
+                "in_index": "no",
+                "index_field_name": "owl_sameAs",
+                "root_index": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

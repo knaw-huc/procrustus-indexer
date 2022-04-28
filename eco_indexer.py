@@ -18,6 +18,8 @@ def processLanguage(lang):
     for item in lst:
         if item != "":
             retArray.append({"language": item[1:]})
+    if len(retArray) < 1 :
+        retArray.append({"language": ""})
     return retArray
 
 
@@ -26,9 +28,10 @@ def processFile(file, fields, indexer):
     with open(file, 'r') as f:
         data = f.read()
 
+    print(file)
     Bs_data = BeautifulSoup(data, "xml")
     typeMan = Bs_data.select_one('meta[key="0500"]')
-    if typeMan.get_text() == 'Fav':
+    if typeMan.get_text() != 'Bnurp':
         json["xml"] = file;
         for key, value in fields.items():
             item = Bs_data.select_one('meta[key="' + key + '"]')
@@ -38,6 +41,9 @@ def processFile(file, fields, indexer):
                 elif key == "4000":
                     text = item.get_text()
                     json[value] = text[1:]
+                elif key == 4241:
+                    text = item.get_text()
+                    json[value] = text[4:]
                 elif key == "3250":
                     json[value] = item.get_text()
                     buffer = item.get_text()
@@ -53,6 +59,8 @@ def processFile(file, fields, indexer):
                     json[value] = item.get_text()
             else:
                 json[value] = ""
+        if json["textLang"] == '':
+            json["textLang"] = [{"language": "onb"}]
         indexer.add_to_index(json)
 
 def processDir(fields, indexer, dir):
@@ -62,6 +70,7 @@ def processDir(fields, indexer, dir):
 
 # Start main program
 fields = {
+    "0500" : "manuscriptType",
     "3250" : "title",
     "4030" : "origPlace",
     "1100" : "origDate",
@@ -73,6 +82,7 @@ fields = {
     "4000" : "itemTitle",
     "3000" : "itemAuthor",
     "4243" : "filiation",
+    "4241" : "main_doc",
     "4063" : "layout",
     "4062" : "measure"
 

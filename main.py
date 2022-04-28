@@ -3,7 +3,7 @@ import json
 from handlers import timbuctoo_handler
 
 def run():
-    content = open("./data/models/ecartico.json", )
+    content = open("./data/models/ondertrouwregisters.json", )
     model = json.load(content)
 
     try:

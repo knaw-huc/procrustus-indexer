@@ -61,11 +61,13 @@ class Timbuctoo_handler:
 
     def create_index(self):
         query = self.qb.get_collections(self.dataset)
+        print(query)
         collections = self.fetch_data(query)
+        print(collections)
         dataset_name = collections["data"]["dataSetMetadata"]["dataSetName"]
         for item in collections["data"]["dataSetMetadata"]["collectionList"]["items"]:
-            #if item["collectionId"] != "tim_unknown":
-            if item["collectionId"] == "schema_ProductModel":
+            if item["collectionId"] != "tim_unknown":
+            #if item["collectionId"] == "schema_ProductModel":
                 print("Creating index for " + item["collectionId"])
                 self.create_collection_index(collections["data"]["dataSetMetadata"]["dataSetId"], dataset_name, item["collectionId"], item["collectionListId"])
         print("Done...")

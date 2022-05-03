@@ -23,9 +23,10 @@ config = {
 }
 indexer = Indexer(config)
 
-def make_json():
+def make_json(cmdi):
     retDict = {}
-    file = etree.parse("/Users/robzeeman/Documents/DI_code/DATA/ecodices/new_index_cmd/1055.xml")
+    #file = etree.parse("/Users/robzeeman/Documents/DI_code/DATA/ecodices/new_index_cmd/1055.xml")
+    file = etree.parse(cmdi)
     root = file.getroot()
     ns = {"cmd": "http://www.clarin.eu/cmd/"}
     for field in index_object:
@@ -39,9 +40,13 @@ def make_json():
     indexer.add_to_index(retDict)
     print(retDict)
 
-
+def processDir(dir):
+    os.chdir(dir)
+    for file in glob.glob("*.xml"):
+        make_json(file)
 
 #make_json()
+processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd_out/1")
 
 
 

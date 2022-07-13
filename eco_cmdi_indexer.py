@@ -4,46 +4,8 @@ from lxml import etree
 import glob, os, codecs
 import unicodedata
 
-index_object = [
-    {"name": "title", "path": "./cmd:Components/cmd:eCodices/cmd:Title/cmd:title", "unbounded": "no"},
-    {"name": "mmdc_title", "path": "./cmd:Components/cmd:eCodices/cmd:Title/cmd:mmdc_title", "unbounded": "no"},
-    {"name": "settlement",
-     "path": "./cmd:Components/cmd:eCodices/cmd:Source/cmd:Identifier/cmd:Settlement/cmd:settlement",
-     "unbounded": "no"},
-    {"name": "repository",
-     "path": "./cmd:Components/cmd:eCodices/cmd:Source/cmd:Identifier/cmd:Repository/cmd:repository",
-     "unbounded": "no"},
-    {"name": "origDate",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:Head/cmd:OrigDate/cmd:mmdc_origDate",
-     "unbounded": "no"},
-    {"name": "language",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:Contents/cmd:textLang/cmd:textLang",
-     "unbounded": "no"},
-    {"name": "type",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:ObjectDesc/cmd:form",
-     "unbounded": "no"},
-    {"name": "binding",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:bindingDesc/cmd:Binding/cmd:binding",
-     "unbounded": "no"},
-    {"name": "material",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:ObjectDesc/cmd:SupportDesc/cmd:Material/cmd:material",
-     "unbounded": "no"},
-    {"name": "mmdc_material",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:ObjectDesc/cmd:SupportDesc/cmd:Material/cmd:mmdc_material",
-     "unbounded": "no"},
-    {"name": "musicnotation",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:musicNotation",
-     "unbounded": "no"},
-    {"name": "decoration",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:DecoDesc/cmd:DecoNote/cmd:decoNote",
-     "unbounded": "no"},
-    {"name": "mmdc_decoration",
-     "path": "./cmd:CMD/cmd:Components/cmd:eCodices/cmd:Source/cmd:PhysDesc/cmd:DecoDesc/cmd:DecoNote/cmd:mmdc_decoNote",
-     "unbounded": "no"}
-
-]
-
-
+f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
+index_object = json.load(f)
 
 config = {
     "url" : "localhost",
@@ -52,6 +14,21 @@ config = {
 }
 indexer = Indexer(config)
 
+def grab_value(path, root, ns):
+    content = root.findall(path, ns)
+    if content and content[0].text is not None:
+        return unicodedata.normalize("NFKD", content[0].text).strip()
+    else:
+        return ""
+
+def choose_value(path, mmdc_path, root, ns):
+    val = grab_value(path, root, ns)
+    mmdc_val = grab_value(mmdc_path, root, ns)
+    if val != "":
+        return val
+    else:
+        return mmdc_val
+
 def make_json(cmdi):
     retDict = {}
     #file = etree.parse("/Users/robzeeman/Documents/DI_code/DATA/ecodices/new_index_cmd/1055.xml")
@@ -59,15 +36,14 @@ def make_json(cmdi):
     root = file.getroot()
     ns = {"cmd": "http://www.clarin.eu/cmd/"}
     for field in index_object:
-        content = root.findall(field["path"], ns)
-        if field["unbounded"] == "no":
-            if content and content[0].text is not None:
-                retDict[field["name"]] = unicodedata.normalize("NFKD", content[0].text).strip()
-            else:
-                retDict[field["name"]] = ""
+        if len(field["fields"]) == 1:
+            retDict[field["name"]] = grab_value(field["fields"][0]["path"], root, ns)
+        else:
+            retDict[field["name"]] = choose_value(field["fields"][0]["path"], field["fields"][1]["path"], root, ns)
 
     # Add collection, which consists of settlement plus repository
     retDict["collection"] = retDict["settlement"] + ', ' + retDict["repository"]
+    retDict["xml"] = cmdi
     indexer.add_to_index(retDict)
     print(retDict)
 

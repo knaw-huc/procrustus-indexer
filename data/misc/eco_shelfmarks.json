@@ -1,0 +1,659 @@
+[
+ {
+   "shelfmark": "10 F 26"
+ },
+ {
+   "shelfmark": "10 A 21"
+ },
+ {
+   "shelfmark": "10 F 2"
+ },
+ {
+   "shelfmark": "10 B 24"
+ },
+ {
+   "shelfmark": "10 D 35"
+ },
+ {
+   "shelfmark": "10 B 27"
+ },
+ {
+   "shelfmark": "10 F 30"
+ },
+ {
+   "shelfmark": "10 E 40"
+ },
+ {
+   "shelfmark": "10 F 14"
+ },
+ {
+   "shelfmark": "10 F 21"
+ },
+ {
+   "shelfmark": "10 E 41"
+ },
+ {
+   "shelfmark": "10 F 22"
+ },
+ {
+   "shelfmark": "10 B 4"
+ },
+ {
+   "shelfmark": "10 F 27"
+ },
+ {
+   "shelfmark": "10 E 47"
+ },
+ {
+   "shelfmark": "10 F 5"
+ },
+ {
+   "shelfmark": "10 B 21"
+ },
+ {
+   "shelfmark": "10 F 20"
+ },
+ {
+   "shelfmark": "10 F 15"
+ },
+ {
+   "shelfmark": "10 E 10"
+ },
+ {
+   "shelfmark": "10 C 26"
+ },
+ {
+   "shelfmark": "10 F 23"
+ },
+ {
+   "shelfmark": "10 F 18"
+ },
+ {
+   "shelfmark": "10 D 27"
+ },
+ {
+   "shelfmark": "10 F 9"
+ },
+ {
+   "shelfmark": "10 C 17"
+ },
+ {
+   "shelfmark": "10 B 23"
+ },
+ {
+   "shelfmark": "10 D 42"
+ },
+ {
+   "shelfmark": "10 F 39"
+ },
+ {
+   "shelfmark": "10 F 4"
+ },
+ {
+   "shelfmark": "10 F 3"
+ },
+ {
+   "shelfmark": "10 F 31"
+ },
+ {
+   "shelfmark": "10 B 1"
+ },
+ {
+   "shelfmark": "10 D 15"
+ },
+ {
+   "shelfmark": "10 D 46"
+ },
+ {
+   "shelfmark": "10 C 19"
+ },
+ {
+   "shelfmark": "10 B 25"
+ },
+ {
+   "shelfmark": "10 D 41"
+ },
+ {
+   "shelfmark": "10 C 14"
+ },
+ {
+   "shelfmark": "10 E 6"
+ },
+ {
+   "shelfmark": "10 E 48"
+ },
+ {
+   "shelfmark": "10 F 38"
+ },
+ {
+   "shelfmark": "10 E 2"
+ },
+ {
+   "shelfmark": "10 C 16"
+ },
+ {
+   "shelfmark": "10 E 14"
+ },
+ {
+   "shelfmark": "10 D 25"
+ },
+ {
+   "shelfmark": "10 E 1"
+ },
+ {
+   "shelfmark": "10 A 19"
+ },
+ {
+   "shelfmark": "10 A 18"
+ },
+ {
+   "shelfmark": "10 D 36"
+ },
+ {
+   "shelfmark": "10 A 12"
+ },
+ {
+   "shelfmark": "10 D 24"
+ },
+ {
+   "shelfmark": "10 D 1"
+ },
+ {
+   "shelfmark": "10 B 17"
+ },
+ {
+   "shelfmark": "10 A 15"
+ },
+ {
+   "shelfmark": "10 D 37"
+ },
+ {
+   "shelfmark": "10 C 21"
+ },
+ {
+   "shelfmark": "10 B 29"
+ },
+ {
+   "shelfmark": "10 A 8"
+ },
+ {
+   "shelfmark": "10 B 7"
+ },
+ {
+   "shelfmark": "10 D 30"
+ },
+ {
+   "shelfmark": "10 B 22"
+ },
+ {
+   "shelfmark": "10 D 11"
+ },
+ {
+   "shelfmark": "10 D 34"
+ },
+ {
+   "shelfmark": "10 B 3"
+ },
+ {
+   "shelfmark": "10 F 32"
+ },
+ {
+   "shelfmark": "10 D 7"
+ },
+ {
+   "shelfmark": "10 D 6"
+ },
+ {
+   "shelfmark": "10 D 23"
+ },
+ {
+   "shelfmark": "10 B 2"
+ },
+ {
+   "shelfmark": "10 B 9"
+ },
+ {
+   "shelfmark": "10 A 1"
+ },
+ {
+   "shelfmark": "10 F 4 KL"
+ },
+ {
+   "shelfmark": "11 J 3 KL"
+ },
+ {
+   "shelfmark": "11 J 1 KL"
+ },
+ {
+   "shelfmark": "101 F 1 KL"
+ },
+ {
+   "shelfmark": "101 F 2 KL"
+ },
+ {
+   "shelfmark": "10 T 1 KL"
+ },
+ {
+   "shelfmark": "101 E 14 KL"
+ },
+ {
+   "shelfmark": "101 F 4 KL"
+ },
+ {
+   "shelfmark": "101 F 17 KL"
+ },
+ {
+   "shelfmark": "11 L 2 KL"
+ },
+ {
+   "shelfmark": "11 H 2 KL"
+ },
+ {
+   "shelfmark": "101 E 1 KL"
+ },
+ {
+   "shelfmark": "101 E 4 KL"
+ },
+ {
+   "shelfmark": "11 B 5 KL"
+ },
+ {
+   "shelfmark": "101 E 18 KL"
+ },
+ {
+   "shelfmark": "101 E 17 KL"
+ },
+ {
+   "shelfmark": "101 E 5 KL"
+ },
+ {
+   "shelfmark": "101 E 6 KL"
+ },
+ {
+   "shelfmark": "101 D 10 KL"
+ },
+ {
+   "shelfmark": "101 D 11 KL"
+ },
+ {
+   "shelfmark": "101 E 15 KL"
+ },
+ {
+   "shelfmark": "10 W 3 KL"
+ },
+ {
+   "shelfmark": "101 E 11 KL"
+ },
+ {
+   "shelfmark": "101 E 12 KL"
+ },
+ {
+   "shelfmark": "101 D 3 KL"
+ },
+ {
+   "shelfmark": "101 E 8 KL"
+ },
+ {
+   "shelfmark": "101 E 9 KL"
+ },
+ {
+   "shelfmark": "101 B 5 KL Nr. 12 in convoluut"
+ },
+ {
+   "shelfmark": "111 D 11 KL Nr. 2 in convoluut"
+ },
+ {
+   "shelfmark": "111 D 11 KL Nr. 5 in convoluut"
+ },
+ {
+   "shelfmark": "10 W 6 KL Nr. 1 in convoluut"
+ },
+ {
+   "shelfmark": "101 F 8 KL"
+ },
+ {
+   "shelfmark": "10 W 5 KL"
+ },
+ {
+   "shelfmark": "101 F 15 KL"
+ },
+ {
+   "shelfmark": "101 D 18 KL"
+ },
+ {
+   "shelfmark": "101 D 8 KL"
+ },
+ {
+   "shelfmark": "101 D 9 KL"
+ },
+ {
+   "shelfmark": "101 F 13 KL"
+ },
+ {
+   "shelfmark": "101 D 6 KL"
+ },
+ {
+   "shelfmark": "101 F 10 KL"
+ },
+ {
+   "shelfmark": "101 E 7 KL"
+ },
+ {
+   "shelfmark": "101 F 5 KL"
+ },
+ {
+   "shelfmark": "101 D 2 KL"
+ },
+ {
+   "shelfmark": "10 W 7 KL"
+ },
+ {
+   "shelfmark": "10 W 1 KL"
+ },
+ {
+   "shelfmark": "11 L 1 KL"
+ },
+ {
+   "shelfmark": "101 D 13 KL"
+ },
+ {
+   "shelfmark": "101 D 14 KL"
+ },
+ {
+   "shelfmark": "101 F 16 KL"
+ },
+ {
+   "shelfmark": "111 E 7 KL"
+ },
+ {
+   "shelfmark": "111 E 8 KL"
+ },
+ {
+   "shelfmark": "111 E 6 KL"
+ },
+ {
+   "shelfmark": "10 W 2 KL"
+ },
+ {
+   "shelfmark": "11 F 1 KL"
+ },
+ {
+   "shelfmark": "11 D 4 KL"
+ },
+ {
+   "shelfmark": "11 D 3 KL"
+ },
+ {
+   "shelfmark": "11 F 5 KL"
+ },
+ {
+   "shelfmark": "101 G 11 KL"
+ },
+ {
+   "shelfmark": "101 F 22 KL"
+ },
+ {
+   "shelfmark": "101 F 23 KL"
+ },
+ {
+   "shelfmark": "11 F 3 KL Nr. 3 in convoluut"
+ },
+ {
+   "shelfmark": "101 G 6 KL"
+ },
+ {
+   "shelfmark": "11 J 2 KL"
+ },
+ {
+   "shelfmark": "111 E 4 KL"
+ },
+ {
+   "shelfmark": "111 E 1 KL"
+ },
+ {
+   "shelfmark": "111 E 13 KL Nr. 2 in convoluut"
+ },
+ {
+   "shelfmark": "101 D 15 KL"
+ },
+ {
+   "shelfmark": "101 F 20 KL"
+ },
+ {
+   "shelfmark": "111 E 9 KL"
+ },
+ {
+   "shelfmark": "111 E 3 KL"
+ },
+ {
+   "shelfmark": "111 E 2 KL"
+ },
+ {
+   "shelfmark": "101 E 24 KL"
+ },
+ {
+   "shelfmark": "PBF 150 I hs"
+ },
+ {
+   "shelfmark": "PBF 150 II hs"
+ },
+ {
+   "shelfmark": "PBF 150 III hs"
+ },
+ {
+   "shelfmark": "PBF 281 hs"
+ },
+ {
+   "shelfmark": "PBF 282 hs"
+ },
+ {
+   "shelfmark": "PBF 285 hs"
+ },
+ {
+   "shelfmark": "PBF 300 hs"
+ },
+ {
+   "shelfmark": "PBF 345 hs"
+ },
+ {
+   "shelfmark": "PBF 42 hs"
+ },
+ {
+   "shelfmark": "PBF 43 hs"
+ },
+ {
+   "shelfmark": "PBF 44 hs"
+ },
+ {
+   "shelfmark": "PBF 45 hs"
+ },
+ {
+   "shelfmark": "PBF 47 hs"
+ },
+ {
+   "shelfmark": "PBF 48 hs"
+ },
+ {
+   "shelfmark": "PBF 50 hs"
+ },
+ {
+   "shelfmark": "PBF 51 hs"
+ },
+ {
+   "shelfmark": "PBF 52 hs"
+ },
+ {
+   "shelfmark": "PBF 53 hs"
+ },
+ {
+   "shelfmark": "PBF 54 hs"
+ },
+ {
+   "shelfmark": "PBF 55 hs"
+ },
+ {
+   "shelfmark": "PBF 56 hs"
+ },
+ {
+   "shelfmark": "PBF 57 hs"
+ },
+ {
+   "shelfmark": "PBF 58 hs"
+ },
+ {
+   "shelfmark": "PBF 587 hs"
+ },
+ {
+   "shelfmark": "PBF 588 hs"
+ },
+ {
+   "shelfmark": "PBF 59 hs"
+ },
+ {
+   "shelfmark": "PBF 6168 hs"
+ },
+ {
+   "shelfmark": "PBF 640 hs"
+ },
+ {
+   "shelfmark": "PBF 641 hs"
+ },
+ {
+   "shelfmark": "PBF 65 D hs"
+ },
+ {
+   "shelfmark": "PBF 680 hs"
+ },
+ {
+   "shelfmark": "PBF 681 hs"
+ },
+ {
+   "shelfmark": "PBF 682 hs"
+ },
+ {
+   "shelfmark": "PBF 683 hs"
+ },
+ {
+   "shelfmark": "PBF 684 hs"
+ },
+ {
+   "shelfmark": "PBF 685 hs"
+ },
+ {
+   "shelfmark": "PBF 686 hs"
+ },
+ {
+   "shelfmark": "PBF 688 hs"
+ },
+ {
+   "shelfmark": "PBF 689 hs"
+ },
+ {
+   "shelfmark": "PBF 690 hs"
+ },
+ {
+   "shelfmark": "PBF 691 hs"
+ },
+ {
+   "shelfmark": "PBF 692 hs"
+ },
+ {
+   "shelfmark": "PBF 693 hs"
+ },
+ {
+   "shelfmark": "PBF 735 hs"
+ },
+ {
+   "shelfmark": "PBF 9056 hs D"
+ },
+ {
+   "shelfmark": "PBF FG : II B 2"
+ },
+ {
+   "shelfmark": "PBF FG : II B 3"
+ },
+ {
+   "shelfmark": "PBF hs 1375"
+ },
+ {
+   "shelfmark": "PBF hs 1632"
+ },
+ {
+   "shelfmark": "PBF hs 1804"
+ },
+ {
+   "shelfmark": "PBF hs 228"
+ },
+ {
+   "shelfmark": "PBF hs R 5"
+ },
+ {
+   "shelfmark": "PBF hs 289"
+ },
+ {
+   "shelfmark": "PBF hs 290"
+ },
+ {
+   "shelfmark": "PBF hs 902"
+ },
+ {
+   "shelfmark": "PBF hs 903"
+ },
+ {
+   "shelfmark": "PBF hs R 1"
+ },
+ {
+   "shelfmark": "PBF hs R 2"
+ },
+ {
+   "shelfmark": "PBF hs R 3"
+ },
+ {
+   "shelfmark": "PBF hs R 4"
+ },
+ {
+   "shelfmark": "PBF hs R 6"
+ },
+ {
+   "shelfmark": "PBF hs RK 1"
+ },
+ {
+   "shelfmark": "PBF hs RK 3"
+ },
+ {
+   "shelfmark": "PBF hs R 7"
+ },
+ {
+   "shelfmark": "PBF hs R 10"
+ },
+ {
+   "shelfmark": "38 Hs"
+ },
+ {
+   "shelfmark": "Wb 150"
+ },
+ {
+   "shelfmark": "Hs R 8"
+ },
+ {
+   "shelfmark": "Hs R 9"
+ },
+ {
+   "shelfmark": "Hs R 10"
+ },
+ {
+   "shelfmark": "FG 439 (II 8/2)"
+ },
+ {
+   "shelfmark": "Hs 1183"
+ },
+ {
+   "shelfmark": "A III 31"
+ },
+ {
+   "shelfmark": "Schwartzenberg 3945a"
+ },
+ {
+   "shelfmark": "1074R"
+ }
+]

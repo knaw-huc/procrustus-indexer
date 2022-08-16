@@ -1,11 +1,25 @@
+# -*- coding: utf-8 -*-
 from indexer import Indexer
 import json
 from lxml import etree
 import glob, os, codecs
 import unicodedata
 
+
+
+
+
+old_h = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.1">'
+new_h = '<cmd:CMD xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:ec="https:huygens.knaw.nl/ecodicesnl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.clarin.eu/cmd/ https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.1/profiles/clarin.eu:cr1:p_1633000337993/xsd" CMDVersion="1.1">'
+
 f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
 index_object = json.load(f)
+
+s = open("./data/misc/eco_shelfmarks.json")
+shelfmarks = json.load(s)
+#print(shelfmarks)
+
+
 
 config = {
     "url" : "localhost",
@@ -13,6 +27,67 @@ config = {
     "index" : "manuscript"
 }
 indexer = Indexer(config)
+
+def normalize_language(lang):
+    languages = {"ara": "Arabic",
+                 "eng": "English",
+                 "fra": "French",
+                 "fry": "Western Frisian",
+                 "gla": "Gaelic",
+                 "deu": "German",
+                 "grc": "Ancient Greek",
+                 "heb": "Hebrew",
+                 "isl": "Icelandic",
+                 "gle": "Irish",
+                 "ita": "Italian",
+                 "lat": "Latin",
+                 "yid": "Yiddish",
+                 "gml": "Middle Low German",
+                 "mis": "Uncoded languages",
+                 "nld": "Dutch",
+                 "oci": "Occitan (post 1500)",
+                 "pro": "Old Occitan (to 1500) Old Provençal (to 1500)",
+                 "spa": "Spanish",
+                 "und": "Undetermined"}
+    if lang in languages:
+        return languages[lang]
+    else:
+        return lang
+
+def normalize_date(dateStr):
+    centuries = {"eighth": "8th century", "ninth": "9th century", "tenth": "10th century", "eleventh": "11th century", "twelfth": "12th century", "thirteenth": "13th century", "fourteenth": "14th century", "fifteenth": "15th century", "sixteenth": "16th century", "seventeenth": "17th century"}
+    # grab centuries
+    for century in centuries.values():
+        if century in dateStr:
+            return century
+
+    for century in centuries.keys():
+        if century in dateStr:
+            return centuries[century]
+
+    # grab years
+
+    year = dateStr[0:2]
+    if year.isnumeric():
+        if year[0] == '1':
+            cent = int(year)
+        else:
+            cent = int(year[0])
+        cent = cent + 1
+        return str(cent) + "th century"
+
+    # OK, you asked for it.
+    year = ""
+    for char in dateStr:
+        if char.isdigit():
+            year = year + char
+            if len(year) == 2:
+                cent = int(year)
+                cent = cent + 1
+                return str(cent) + "th century"
+
+    return dateStr
+
 
 def grab_value(path, root, ns):
     content = root.findall(path, ns)
@@ -31,7 +106,12 @@ def choose_value(path, mmdc_path, root, ns):
 
 def make_json(cmdi):
     retDict = {}
-    #file = etree.parse("/Users/robzeeman/Documents/DI_code/DATA/ecodices/new_index_cmd/1055.xml")
+    #file_name = "/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8/8937.xml"
+    command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + cmdi
+    #command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + file_name
+    os.system(command)
+    #os.system('rm ' + cmdi + '.bu')
+    #file = etree.parse(file_name)
     file = etree.parse(cmdi)
     root = file.getroot()
     ns = {"cmd": "http://www.clarin.eu/cmd/"}
@@ -41,27 +121,48 @@ def make_json(cmdi):
         else:
             retDict[field["name"]] = choose_value(field["fields"][0]["path"], field["fields"][1]["path"], root, ns)
 
+
     # Add collection, which consists of settlement plus repository
-    retDict["collection"] = retDict["settlement"] + ', ' + retDict["repository"]
+    if retDict["settlement"] == "The Hague":
+        retDict["settlement"] = "Den Haag"
+    if retDict["settlement"] == 'Deventer':
+        retDict["collection"] = "Deventer, Athenaeumbibliotheek"
+    else:
+        retDict["collection"] = retDict["settlement"] + ', ' + retDict["repository"]
     retDict["xml"] = cmdi
+    retDict["language"] = normalize_language(retDict["language"])
+    retDict["tempDate"] = retDict["origDate"]
+    retDict["origDate"] = normalize_date(retDict["origDate"])
+    if retDict["musicnotation"].strip() == "":
+        retDict["musicnotation"] = "no"
+    else:
+        retDict["musicnotation"] = "yes"
+
+
+    #if retDict["shelfmark"] in shelfmarks:
+        #indexer.add_to_index(retDict)
+        #retDict["pilot"] = "yes"
+    #    print(retDict["shelfmark"])
+    #else:
+    #    #os.system('rm ' + cmdi)
+    #    retDict["pilot"] = "no"
     indexer.add_to_index(retDict)
-    print(retDict)
 
 def processDir(dir):
     os.chdir(dir)
     for file in glob.glob("*.xml"):
         make_json(file)
 
-#make json
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/1")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/2")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/3")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/4")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/5")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/6")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/7")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8")
-processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/9")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/1")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/2")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/3")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/4")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/5")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/6")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/7")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8")
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/9")
+processDir("/Users/robzeeman/Desktop/Werkmap/ecodices/xml")
 
 
 

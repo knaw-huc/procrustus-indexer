@@ -137,7 +137,10 @@ def make_json(cmdi):
         retDict["musicnotation"] = "no"
     else:
         retDict["musicnotation"] = "yes"
-
+    if retDict["decoration"].strip() == "":
+        retDict["has_decoration"] = "no"
+    else:
+        retDict["has_decoration"] = "yes"
 
     #if retDict["shelfmark"] in shelfmarks:
         #indexer.add_to_index(retDict)
@@ -162,7 +165,7 @@ def processDir(dir):
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/7")
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8")
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/9")
-processDir("/Users/robzeeman/Desktop/Werkmap/ecodices/xml")
+processDir("/Users/robzeeman/Desktop/Werkmap/ecodices/xml_selectie")
 
 
 

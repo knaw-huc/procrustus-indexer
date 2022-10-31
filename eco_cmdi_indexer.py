@@ -10,6 +10,7 @@ import unicodedata
 
 
 old_h = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.1">'
+old_th = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.2">'
 new_h = '<cmd:CMD xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:ec="https:huygens.knaw.nl/ecodicesnl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.clarin.eu/cmd/ https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.1/profiles/clarin.eu:cr1:p_1633000337993/xsd" CMDVersion="1.1">'
 
 f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
@@ -108,6 +109,7 @@ def make_json(cmdi):
     retDict = {}
     #file_name = "/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8/8937.xml"
     command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + cmdi
+    command = "sed -i.bu 's@" + old_th + "@" + new_h + "@' " + cmdi
     #command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + file_name
     os.system(command)
     #os.system('rm ' + cmdi + '.bu')
@@ -134,9 +136,9 @@ def make_json(cmdi):
     retDict["tempDate"] = retDict["origDate"]
     retDict["origDate"] = normalize_date(retDict["origDate"])
     if retDict["musicnotation"].strip() == "":
-        retDict["musicnotation"] = "no"
+        retDict["has_musicnotation"] = "no"
     else:
-        retDict["musicnotation"] = "yes"
+        retDict["has_musicnotation"] = "yes"
     if retDict["decoration"].strip() == "":
         retDict["has_decoration"] = "no"
     else:

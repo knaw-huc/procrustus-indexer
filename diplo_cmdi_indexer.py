@@ -45,6 +45,7 @@ def grab_list(name, path, root, ns):
 
 def make_json(cmdi):
     retDict = {}
+    #retDict["rob"] = cmdi
     command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + cmdi
     #command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + file_name
     os.system(command)

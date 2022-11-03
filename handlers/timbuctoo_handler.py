@@ -21,7 +21,7 @@ class Timbuctoo_handler:
 
     def fetch_data(self, query):
         params = {"query": query}
-        results = requests.post(self.server, json = params, headers = {"Authorization": "b0ed48ca-765a-47b2-9514-94568dc73165",
+        results = requests.post(self.server, json = params, headers={
                                                                     'Content-Type': 'application/json',
                                                                     "VRE_ID": self.dataset})
         return json.loads(results.text)
@@ -30,6 +30,8 @@ class Timbuctoo_handler:
         collection_item = {}
         collection_item["uri"] = item["uri"]
         collection_item["title"] = item["title"]["value"]
+        if item["graphs"]:
+            collection_item["graphs"] = item["graphs"]
         return json.dumps(collection_item)
 
 
@@ -67,7 +69,25 @@ class Timbuctoo_handler:
             indexer.add_to_index(data)
             print(count)
 
+    # Create search menu items for browser (store.py in procrustus service)
+    def create_store(self):
+        retDict = []
+        query = self.qb.get_collections(self.dataset)
+        collections = self.fetch_data(query)
+        dataset_name = collections["data"]["dataSetMetadata"]["dataSetName"]
+        for item in collections["data"]["dataSetMetadata"]["collectionList"]["items"]:
+            if item["collectionId"] != "tim_unknown":
+                buffer = {}
+                buffer["collection"] = dataset_name.lower() + "_" + item["collectionId"].lower()
+                buffer["collection_id"] = item["collectionId"]
+                buffer["label"] = self.create_label(item["collectionId"])
+                retDict.append(buffer)
+        print(json.dumps(retDict))
 
+    def create_label(self, str):
+        retStr = str.split('_')
+        retStr.reverse()
+        return retStr[0]
 
     def create_index(self):
         query = self.qb.get_collections(self.dataset)
@@ -75,7 +95,7 @@ class Timbuctoo_handler:
         dataset_name = collections["data"]["dataSetMetadata"]["dataSetName"]
         for item in collections["data"]["dataSetMetadata"]["collectionList"]["items"]:
             if item["collectionId"] != "tim_unknown":
-            #if item["collectionId"] == "schema_Organization":
+            #if item["collectionId"] == "edm_ProvidedCHO":
                 print("Creating index for " + item["collectionId"])
                 self.create_collection_index(collections["data"]["dataSetMetadata"]["dataSetId"], dataset_name, item["collectionId"], item["collectionListId"])
         print("Done...")

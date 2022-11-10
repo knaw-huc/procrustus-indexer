@@ -7,7 +7,8 @@ class Indexer:
 
     # Insert single document to index
     def add_to_index(self, data):
-        result = self.es.index(index = self.config["index"], body = data)
+        #result = self.es.index(index = self.config["index"], body = data)
+        result = self.es.bulk(index = self.config["index"], body=data, refresh='wait_for');
         #print(result)
 
     # Insert set of documents to index

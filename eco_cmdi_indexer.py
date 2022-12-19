@@ -9,15 +9,15 @@ import unicodedata
 
 
 
-old_h = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.1">'
-old_th = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.2">'
-new_h = '<cmd:CMD xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:ec="https:huygens.knaw.nl/ecodicesnl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.clarin.eu/cmd/ https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.1/profiles/clarin.eu:cr1:p_1633000337993/xsd" CMDVersion="1.1">'
+#old_h = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.1">'
+#old_th = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.2">'
+#new_h = '<cmd:CMD xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:ec="https:huygens.knaw.nl/ecodicesnl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.clarin.eu/cmd/ https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.1/profiles/clarin.eu:cr1:p_1633000337993/xsd" CMDVersion="1.1">'
 
 f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
 index_object = json.load(f)
 
-s = open("./data/misc/eco_shelfmarks.json")
-shelfmarks = json.load(s)
+#s = open("./data/misc/eco_shelfmarks.json")
+#shelfmarks = json.load(s)
 #print(shelfmarks)
 
 
@@ -107,16 +107,9 @@ def choose_value(path, mmdc_path, root, ns):
 
 def make_json(cmdi):
     retDict = {}
-    #file_name = "/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/8/8937.xml"
-    command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + cmdi
-    command = "sed -i.bu 's@" + old_th + "@" + new_h + "@' " + cmdi
-    #command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + file_name
-    os.system(command)
-    #os.system('rm ' + cmdi + '.bu')
-    #file = etree.parse(file_name)
     file = etree.parse(cmdi)
     root = file.getroot()
-    ns = {"cmd": "http://www.clarin.eu/cmd/"}
+    ns = {"cmd": "http://www.clarin.eu/cmd/1"}
     for field in index_object:
         if len(field["fields"]) == 1:
             retDict[field["name"]] = grab_value(field["fields"][0]["path"], root, ns)
@@ -144,13 +137,6 @@ def make_json(cmdi):
     else:
         retDict["has_decoration"] = "yes"
 
-    #if retDict["shelfmark"] in shelfmarks:
-        #indexer.add_to_index(retDict)
-        #retDict["pilot"] = "yes"
-    #    print(retDict["shelfmark"])
-    #else:
-    #    #os.system('rm ' + cmdi)
-    #    retDict["pilot"] = "no"
     indexer.add_to_index(retDict)
 
 def processDir(dir):

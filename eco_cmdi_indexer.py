@@ -9,9 +9,9 @@ import unicodedata
 
 
 
-#old_h = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.1">'
+old_h = 'xmlns:cmd="http://www.clarin.eu/cmd/1"'
 #old_th = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.2">'
-#new_h = '<cmd:CMD xmlns:cmd="http://www.clarin.eu/cmd/" xmlns:ec="https:huygens.knaw.nl/ecodicesnl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.clarin.eu/cmd/ https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.1/profiles/clarin.eu:cr1:p_1633000337993/xsd" CMDVersion="1.1">'
+new_h = 'xmlns:cmd="http://www.clarin.eu/cmd/"'
 
 f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
 index_object = json.load(f)
@@ -33,7 +33,7 @@ def normalize_language(lang):
     languages = {"ara": "Arabic",
                  "eng": "English",
                  "fra": "French",
-                 "fry": "Western Frisian",
+                 "fry": "Frisian",
                  "gla": "Gaelic",
                  "deu": "German",
                  "grc": "Ancient Greek",
@@ -55,8 +55,16 @@ def normalize_language(lang):
     else:
         return lang
 
+def normalize_binding(binding):
+    txt = binding.lower()
+    if "post-medieval" in txt or "17th" in txt or "18th" in txt or "19th" in txt:
+        return "Post-medieval"
+    else:
+        return "Medieval"
+
+
 def normalize_date(dateStr):
-    centuries = {"eighth": "8th century", "ninth": "9th century", "tenth": "10th century", "eleventh": "11th century", "twelfth": "12th century", "thirteenth": "13th century", "fourteenth": "14th century", "fifteenth": "15th century", "sixteenth": "16th century", "seventeenth": "17th century"}
+    centuries = {"eighth": "8th century", "ninth": "9th century", "tenth": "10th century", "eleventh": "11th century", "twelfth": "12th century", "thirteenth": "13th century", "fourteenth": "14th century", "fifteenth": "15th century", "sixteenth": "16th century", "seventeenth": "17th century", "c. 900": "9th century"}
     # grab centuries
     for century in centuries.values():
         if century in dateStr:
@@ -73,7 +81,10 @@ def normalize_date(dateStr):
         if year[0] == '1':
             cent = int(year)
         else:
-            cent = int(year[0])
+            if year[0] == '0':
+                cent = int(year[1])
+            else:
+                cent = int(year[0])
         cent = cent + 1
         return str(cent) + "th century"
 
@@ -107,9 +118,12 @@ def choose_value(path, mmdc_path, root, ns):
 
 def make_json(cmdi):
     retDict = {}
+    command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + cmdi
+    #command = "sed -i.bu 's@" + old_h + "@" + new_h + "@' " + file_name
+    os.system(command)
     file = etree.parse(cmdi)
     root = file.getroot()
-    ns = {"cmd": "http://www.clarin.eu/cmd/1"}
+    ns = {"cmd": "http://www.clarin.eu/cmd/"}
     for field in index_object:
         if len(field["fields"]) == 1:
             retDict[field["name"]] = grab_value(field["fields"][0]["path"], root, ns)
@@ -128,6 +142,7 @@ def make_json(cmdi):
     retDict["language"] = normalize_language(retDict["language"])
     retDict["tempDate"] = retDict["origDate"]
     retDict["origDate"] = normalize_date(retDict["origDate"])
+    retDict["binding"] = normalize_binding(retDict["binding"])
     if retDict["musicnotation"].strip() == "":
         retDict["has_musicnotation"] = "no"
     else:
@@ -136,8 +151,56 @@ def make_json(cmdi):
         retDict["has_decoration"] = "no"
     else:
         retDict["has_decoration"] = "yes"
+    retDict["decoration"] = normalize_decoration(retDict["decoration"])
+    retDict["place"] = normalize_place(retDict["place"])
 
     indexer.add_to_index(retDict)
+
+def normalize_decoration(deco):
+    if (deco.lower().find("historiated") != -1):
+        return "Historiated initials"
+    if (deco.lower().find("pen-flourished") != -1):
+        return "Pen-flourished initials"
+    if (deco.lower().find("pen flourished") != -1):
+        return "Pen-flourished initials"
+    if (deco.lower().find("miniature") != -1):
+        return "Miniatures"
+    if (deco.lower().find("decorated") != -1):
+        return "Decorated initials"
+    if (deco.lower().find("litterae") != -1):
+        return "Decorated initials"
+    if (deco.lower().find("red and blue initials") != -1):
+        return "Decorated initials"
+    if (deco.lower().find("drawing") != -1):
+        return "Drawings"
+    if (deco.lower().find("canon") != -1):
+        return "Decorated canon tables"
+    if (deco.lower().find("coats of arms") != -1):
+        return "Coats of arms"
+    if (deco.lower().find("border") != -1):
+        return "Border decoration"
+    return deco
+
+def normalize_place(place):
+    if (place.lower() == 'sine loco'):
+        return 'sine loco'
+    if (place.lower() == 'netherlands' or place.lower() == 'netherlands?'):
+        return 'Netherlands'
+    if (place.lower().find('frisia') != -1):
+        return 'Frisia'
+    if (place.lower().find('ijssel') != -1):
+        return 'IJssel region'
+    if (place.lower().find('utrecht') != -1):
+        return 'Utrecht'
+    if (place.lower().find('france') != -1):
+        return 'France'
+    if (place.lower().find('holland') != -1):
+        return 'Holland'
+
+
+    return place
+
+
 
 def processDir(dir):
     os.chdir(dir)

@@ -41,7 +41,7 @@ def processFile(file, fields, indexer):
                 elif key == "4000":
                     text = item.get_text()
                     json[value] = text[1:]
-                elif key == 4241:
+                elif key == "4241":
                     text = item.get_text()
                     json[value] = text[4:]
                 elif key == "3250":
@@ -55,6 +55,13 @@ def processFile(file, fields, indexer):
                     else:
                         json["location"] = ""
                         json["shelfmark"] = ""
+                elif key == "4060":
+                    buffer = item.get_text()
+                    lst = buffer.split(",")
+                    if len(lst) > 1:
+                       json[value] = lst[1].strip()
+                    else:
+                        json[value] = ""
                 else:
                     json[value] = item.get_text()
             else:
@@ -67,6 +74,7 @@ def processDir(fields, indexer, dir):
     os.chdir(dir)
     for file in glob.glob("*.xml"):
         processFile(file, fields, indexer)
+        print(file)
 
 # Start main program
 fields = {
@@ -84,6 +92,7 @@ fields = {
     "4243" : "filiation",
     "4241" : "main_doc",
     "4063" : "layout",
+    "4060" : "leaves_pages",
     "4062" : "measure"
 
 }
@@ -96,15 +105,6 @@ config = {
 
 indexer = Indexer(config)
 
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/1")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/2")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/3")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/4")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/5")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/6")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/7")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/8")
-processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/mmdc_xml/9")
-
+processDir(fields, indexer, "/Users/robzeeman/surfdrive/Documents/DI/e-codices/data_gijsjan/selectie");
 
 

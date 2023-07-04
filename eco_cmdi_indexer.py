@@ -13,7 +13,7 @@ old_h = 'xmlns:cmd="http://www.clarin.eu/cmd/1"'
 #old_th = '<cmd:CMD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lat="http://lat.mpi.nl/" xmlns:cmd="http://www.clarin.eu/cmd/1" xsi:schemaLocation="http://www.clarin.eu/cmd/ http://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/profiles/clarin.eu:cr1:p_1440426460262/xsd" CMDVersion="1.2">'
 new_h = 'xmlns:cmd="http://www.clarin.eu/cmd/"'
 
-f = open("/Users/robzeeman/surfdrive/Documents/DI/e-codices/indexer/indexed_fields.json")
+f = open("/Users/robzeeman/surfdrive/Documents/DI/ecodices/indexer/indexed_fields.json")
 index_object = json.load(f)
 
 #s = open("./data/misc/eco_shelfmarks.json")
@@ -101,16 +101,25 @@ def normalize_date(dateStr):
     return dateStr
 
 
-def grab_value(path, root, ns):
+def grab_value(path, unbounded, root, ns):
     content = root.findall(path, ns)
     if content and content[0].text is not None:
-        return unicodedata.normalize("NFKD", content[0].text).strip()
+        if unbounded == "yes":
+            retList = []
+            for item in content:
+                retList.append({"item": unicodedata.normalize("NFKD", item.text).strip()})
+            return retList
+        else:
+            return unicodedata.normalize("NFKD", content[0].text).strip()
     else:
-        return ""
+        if unbounded == "yes":
+            return []
+        else:
+            return ""
 
 def choose_value(path, mmdc_path, root, ns):
-    val = grab_value(path, root, ns)
-    mmdc_val = grab_value(mmdc_path, root, ns)
+    val = grab_value(path, "no", root, ns)
+    mmdc_val = grab_value(mmdc_path, "no", root, ns)
     if val != "":
         return val
     else:
@@ -126,7 +135,7 @@ def make_json(cmdi):
     ns = {"cmd": "http://www.clarin.eu/cmd/"}
     for field in index_object:
         if len(field["fields"]) == 1:
-            retDict[field["name"]] = grab_value(field["fields"][0]["path"], root, ns)
+            retDict[field["name"]] = grab_value(field["fields"][0]["path"], field["fields"][0]["unbounded"], root, ns)
         else:
             retDict[field["name"]] = choose_value(field["fields"][0]["path"], field["fields"][1]["path"], root, ns)
 
@@ -145,6 +154,7 @@ def make_json(cmdi):
     retDict["binding"] = normalize_binding(retDict["binding"])
     if retDict["musicnotation"].strip() == "":
         retDict["has_musicnotation"] = "no"
+        retDict["musicnotation"] = "N.a."
     else:
         retDict["has_musicnotation"] = "yes"
     if retDict["decoration"].strip() == "":
@@ -153,8 +163,9 @@ def make_json(cmdi):
         retDict["has_decoration"] = "yes"
     retDict["decoration"] = normalize_decoration(retDict["decoration"])
     retDict["place"] = normalize_place(retDict["place"])
-
-    indexer.add_to_index(retDict)
+    record_id = retDict["xml"].replace('.xml', '')
+    retDict["permalink"] = "https://db.ecodices.nl/detail/" + record_id + "/overview"
+    indexer.add_to_index_with_id(retDict, record_id)
 
 def normalize_decoration(deco):
     if (deco.lower().find("historiated") != -1):
@@ -196,8 +207,6 @@ def normalize_place(place):
         return 'France'
     if (place.lower().find('holland') != -1):
         return 'Holland'
-
-
     return place
 
 
@@ -206,7 +215,10 @@ def processDir(dir):
     os.chdir(dir)
     for file in glob.glob("*.xml"):
         make_json(file)
+    print("Manuscripts indexed.")
 
+
+# processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/0")
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/1")
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/2")
 # processDir("/Users/robzeeman/Documents/DI_code/DATA/ecodices/records/cmd/3")

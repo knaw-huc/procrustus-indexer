@@ -47,7 +47,15 @@ def write_to_index(hits, index):
     targetIndex.bulk_to_index(data)
 
 def run():
-    indexes = ["notarissennetwerk_pnv_personname"]
+    indexes = ["corporatiestukken_https___data_goldenagents_org_datasets_corporatiestukken_roletype_sergeant",
+               "corporatiestukken_https___data_goldenagents_org_datasets_corporatiestukken_roletype_substituut_schoutextraordinaris",
+               "jaikwil_thes_bruid",
+               "jaikwil_thes_persoonsreligie",
+               "notarissennetwerk_schema_book",
+               "saa_thes_registratie",
+               "stcn_schema_dataset",
+               "bredius_voidplus_clusterset",
+               "notarissennetwerk_pnv_personname"]
     for index in indexes:
         create_switch(index)
 

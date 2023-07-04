@@ -13,3 +13,6 @@ class Indexer:
     def bulk_to_index(self, data):
         result = self.es.bulk(index = self.config["index"], body=data, refresh='wait_for');
 
+    def add_to_index_with_id(self, data, data_id):
+        result = self.es.index(index = self.config["index"], body = data, id=data_id)
+

@@ -1,4 +1,5 @@
-["corporatiestukken_https___data_goldenagents_org_datasets_corporatiestukken_roletype_sergeant",
+[
+  "corporatiestukken_https___data_goldenagents_org_datasets_corporatiestukken_roletype_sergeant",
   "corporatiestukken_https___data_goldenagents_org_datasets_corporatiestukken_roletype_substituut_schoutextraordinaris",
   "jaikwil_thes_bruid",
   "jaikwil_thes_persoonsreligie",
@@ -6,6 +7,7 @@
   "saa_thes_registratie",
   "stcn_schema_dataset",
   "bredius_voidplus_clusterset",
+  "notarissennetwerk_pnv_personname",
   "saa_rpp_eventtype",
   "bredius_voidplus_linksetformulation",
   "saa_thes_revocatie",

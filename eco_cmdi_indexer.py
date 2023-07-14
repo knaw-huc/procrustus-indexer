@@ -16,6 +16,10 @@ new_h = 'xmlns:cmd="http://www.clarin.eu/cmd/"'
 f = open("/Users/robzeeman/surfdrive/Documents/DI/ecodices/indexer/indexed_fields.json")
 index_object = json.load(f)
 
+j = open("/Users/robzeeman/surfdrive/Documents/DI/ecodices/handles/handles.json")
+handles = json.load(j)
+huygens_url_prefix = "https://hdl.handle.net/11240/"
+
 #s = open("./data/misc/eco_shelfmarks.json")
 #shelfmarks = json.load(s)
 #print(shelfmarks)
@@ -54,6 +58,12 @@ def normalize_language(lang):
         return languages[lang]
     else:
         return lang
+
+def get_handle(xml):
+    for item in handles:
+        if item["xml"] == xml:
+            return huygens_url_prefix + item["handle"]
+    return huygens_url_prefix
 
 def normalize_binding(binding):
     txt = binding.lower()
@@ -148,6 +158,7 @@ def make_json(cmdi):
     else:
         retDict["collection"] = retDict["settlement"] + ', ' + retDict["repository"]
     retDict["xml"] = cmdi
+    retDict["handle"] = get_handle(cmdi)
     retDict["language"] = normalize_language(retDict["language"])
     retDict["tempDate"] = retDict["origDate"]
     retDict["origDate"] = normalize_date(retDict["origDate"])

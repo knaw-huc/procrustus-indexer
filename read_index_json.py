@@ -13,6 +13,11 @@ import re
 import sys
 import tomllib
 
+def resolve_path(rec, path):
+    if(path.startswith("jmes:")):
+        # for jmes: 5:
+        return jmespath.search(path[5:],rec)
+
 def stderr(text):
     sys.stderr.write("{}\n".format(text))
 
@@ -36,8 +41,7 @@ def arguments():
 if __name__ == "__main__":
     stderr(datetime.today().strftime("start: %H:%M:%S"))
     args = arguments()
-    es = Elasticsearch() #[config])
-    #test()
+    es = Elasticsearch()
     inputdir = ''
     inputfile = ''
     try:
@@ -51,36 +55,21 @@ if __name__ == "__main__":
         inputlist = [inputfile]
         stderr(inputlist)
     with open("ineo.toml", "rb") as f:
-        jmes = tomllib.load(f)
-        stderr("ineo.toml:")
-        stderr(jmes)
-        id_path = jmespath.search("index.id.path", jmes)
-        facet_type = jmespath.search("index.facet.type.path",jmes)
-        facet_activities = jmespath.search("index.facet.activities.path",jmes)
-        facet_domains =jmespath.search("index.facet.domains.path",jmes)
-    for inv in inputlist:
-        with open(inv) as f:
-            d = json.load(f)
-            stderr(id_path[9:])
-            # add_to_index
-            data_id = jmespath.search(id_path[9:], d[0])
-            result = es.index(index = 'text.idx', document = d[0], id = data_id)
-            stderr(f"result: {result['result']}")
-            # add_to_index
-            data_facet_t = jmespath.search(facet_type[9:], d[0])
-            result = es.index(index = 'text.idx', document = d[0], id = data_facet_t)
-            stderr(f"result: {result['result']}")
-            # add_to_index
-            data_facet_a = jmespath.search(facet_activities[9:], d[0])
-            result = es.index(index = 'text.idx', document = d[0], id = data_facet_a)
-            stderr(f"result: {result['result']}")
-            # add_to_index
-            data_facet_d = jmespath.search(facet_domains[9:], d[0])
-            result = es.index(index = 'text.idx', document = d[0], id = data_facet_d)
-            stderr(f"result: {result['result']}")
-            # add_to_index
-            result = es.index(index = 'text.idx', document = d[0])
-            stderr(f"result: {result['result']}")
+        config = tomllib.load(f)
+        path_id = conf['index']['id']['path']
+        for inv in inputlist:
+            doc = {}
+            with open(inv) as f:
+                d = json.load(f)
+                id = resolve_path(d,path_id)
+                doc['id'] = id
+                for key in config['index']['facet'].keys():
+                    facet = config["index"]["facet"][key]
+                    path_facet = facet["path"]
+                    doc[key] = resolve_path(d, path_facet)
+                # add_to_index
+                result = es.index(index = 'text.idx', document = doc, id = id)
+                stderr(f"result: {result['result']}")
 
     end_prog(0)
 

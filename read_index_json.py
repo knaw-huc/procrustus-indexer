@@ -29,34 +29,30 @@ def end_prog(code=0):
 
 def arguments():
     ap = argparse.ArgumentParser(description='Read json and feed to ElasticSearch')
-    ap.add_argument('-d', '-directory',
-                    default="data",
+    ap.add_argument('-d', '--directory',
                     help="input directory")
     ap.add_argument('-f', '--inputfile',
-                    default="SASTA_processed.json",
                     help="input file")
     args = vars(ap.parse_args())
-    return args
+    return args,ap
 
 if __name__ == "__main__":
     stderr(datetime.today().strftime("start: %H:%M:%S"))
-    args = arguments()
+    args,ap = arguments()
     es = Elasticsearch()
-    inputdir = ''
     inputfile = ''
-    try:
-        inputdir = args['inputdir']
-        stderr(inputdir)
-        inputlist = glob.glob(f'{inputdir}/*.json')
-        stderr(inputlist)
-    except:
-        stderr('except')
+    inputdir = args['directory']
+    inputlist = glob.glob(f'{inputdir}/*.json')
+    if len(inputlist)==0:
         inputfile = args['inputfile']
+        if inputfile==None:
+            stderr(ap.print_help())
+            end_prog(1)
         inputlist = [inputfile]
-        stderr(inputlist)
     with open("ineo.toml", "rb") as f:
         config = tomllib.load(f)
-        path_id = conf['index']['id']['path']
+        path_id = config['index']['id']['path']
+        actions = []
         for inv in inputlist:
             doc = {}
             with open(inv) as f:
@@ -67,9 +63,12 @@ if __name__ == "__main__":
                     facet = config["index"]["facet"][key]
                     path_facet = facet["path"]
                     doc[key] = resolve_path(d, path_facet)
-                # add_to_index
-                result = es.index(index = 'text.idx', document = doc, id = id)
-                stderr(f"result: {result['result']}")
+                # add to index list
+                actions.append({'_index':'text.idx','_id':id,'_source':doc})
+#                result = es.index(index = 'text.idx', document = doc, id = id)
+#                stderr(f"result: {result['result']}")
+        # add to index:
+        result = bulk(es,actions)
 
     end_prog(0)
 

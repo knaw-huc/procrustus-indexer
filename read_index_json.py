@@ -31,6 +31,9 @@ def arguments():
     ap = argparse.ArgumentParser(description='Read json and feed to ElasticSearch')
     ap.add_argument('-d', '--directory',
                     help="input directory")
+    ap.add_argument('-t', '--tomlfile',
+                    default='ineo.toml',
+                    help="input file")
     ap.add_argument('-f', '--inputfile',
                     help="input file")
     args = vars(ap.parse_args())
@@ -39,6 +42,7 @@ def arguments():
 if __name__ == "__main__":
     stderr(datetime.today().strftime("start: %H:%M:%S"))
     args,ap = arguments()
+    tomlfile = args['tomlfile']
     es = Elasticsearch()
     inputfile = ''
     inputdir = args['directory']
@@ -49,7 +53,7 @@ if __name__ == "__main__":
             stderr(ap.print_help())
             end_prog(1)
         inputlist = [inputfile]
-    with open("ineo.toml", "rb") as f:
+    with open(tomlfile, "rb") as f:
         config = tomllib.load(f)
         path_id = config['index']['id']['path']
         actions = []

@@ -25,3 +25,4 @@ xlrd==2.0.1
 xmljson==0.2.1
 elementpath==4.1.5
 webvtt-py==0.4.6
+jmespath~=1.0.1

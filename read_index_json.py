@@ -1,117 +1,13 @@
 # -*- coding: utf-8 -*-
 import argparse
-from datetime import datetime
-from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk
 import glob
-import jmespath
-import json
 import locale
+import sys
+from datetime import datetime
+
+from procrustus_indexer import build_indexer
 
 locale.setlocale(locale.LC_ALL, 'nl_NL')
-import sys
-import tomllib
-
-
-class Indexer:
-    es: Elasticsearch = None
-    config: dict
-    index_name: str
-
-    def __init__(self, es: Elasticsearch, config: dict, index_name: str):
-        self.es = es
-        self.config = config
-        self.index_name = index_name
-
-    def parse_json(self, infile: dict) -> dict:
-        """
-        Process an input JSON file according to config and return resulting dict.
-        :param infile:
-        :return:
-        """
-        path_id = self.config['index']['id']['path']
-        doc_id = resolve_path(infile, path_id)
-        doc = {'id': doc_id}
-        for key in self.config['index']['facet'].keys():
-            facet = self.config["index"]["facet"][key]
-            path_facet = facet["path"]
-            doc[key] = resolve_path(infile, path_facet)
-        return doc
-
-
-    def create_mapping(self, overwrite: bool = False) -> dict:
-        """
-        Create the elasticsearch index mapping according to config and return resulting dict.
-        :return:
-        """
-        if overwrite:
-            self.es.indices.delete(index=self.index_name, ignore=[400, 404])
-
-        properties = {}
-        for facet_name in self.config['index']['facet'].keys():
-            facet = self.config["index"]["facet"][facet_name]
-            property_type = facet.get('type', 'text')
-            if property_type == 'text':
-                properties[facet_name] = {
-                    'type': 'text',
-                    'fields': {
-                        'keyword': {
-                            'type': 'keyword',
-                            'ignore_above': 256
-                        },
-                    }
-                }
-            elif property_type == 'keyword':
-                properties[facet_name] = {
-                    'type': 'keyword',
-                }
-            elif property_type == 'number':
-                properties[facet_name] = {
-                    'type': 'integer',
-                }
-            elif property_type == 'date':
-                properties[facet_name] = {
-                    'type': 'date',
-                }
-
-        mappings = {
-            'properties': properties
-        }
-
-        settings = {
-            'number_of_shards': 1,
-            'number_of_replicas': 0
-        }
-
-        self.es.indices.create(index=self.index_name, mappings=mappings, settings=settings)
-        return mappings
-
-
-    def import_files(self, files: list[str]):
-        """
-        Import files into an elasticsearch index based on the given config.
-        :param files: list of files to import
-        :param index: Elasticsearch index
-        :return:
-        """
-        es = Elasticsearch()
-        actions = []
-        for inv in files:
-            doc = {}
-            with open(inv) as f:
-                d = json.load(f)
-                # add to index list
-                doc = self.parse_json(d)
-                actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
-        # add to index:
-        result = bulk(es, actions)
-
-
-def resolve_path(rec, path):
-    if path.startswith("jmes:"):
-        # for jmes: 5:
-        return jmespath.search(path[5:], rec)
-
 
 def stderr(text):
     sys.stderr.write("{}\n".format(text))
@@ -153,10 +49,9 @@ def main():
             end_prog(1)
         input_list = [input_file]
 
-    with open(toml_file, "rb") as f:
-        config = tomllib.load(f)
+    es = Elasticsearch()
 
-    indexer = Indexer(Elasticsearch(), config, index)
+    indexer = build_indexer(toml_file, index, es)
 
     indexer.create_mapping(overwrite=args['force'])
     indexer.import_files(input_list)

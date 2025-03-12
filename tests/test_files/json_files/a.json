@@ -1,0 +1,11 @@
+{
+  "id": 0,
+  "title": "This is a test",
+  "tag": "label",
+  "value": 42,
+  "nested": {
+    "object": {
+      "value": 7
+    }
+  }
+}

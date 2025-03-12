@@ -1,5 +1,5 @@
 # Procrustus Indexer
-Python app for indexing HuC datasets.
+Python library for indexing HuC datasets.
 
 This is a first experimental version, for indexing files based on a TOML configuration.
 For now, input files need to be json.

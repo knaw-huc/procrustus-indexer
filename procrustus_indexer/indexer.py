@@ -72,7 +72,6 @@ class Indexer:
         :param index: Elasticsearch index
         :return:
         """
-        es = Elasticsearch()
         actions = []
         for inv in files:
             doc = {}
@@ -80,7 +79,7 @@ class Indexer:
                 doc = self.parser.parse_file(f)
                 actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:
-        result = bulk(es, actions)
+        result = bulk(self.es, actions)
 
 
     def import_folder(self, folder: str):

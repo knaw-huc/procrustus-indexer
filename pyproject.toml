@@ -3,6 +3,7 @@ name = "procrustus-indexer"
 version = "2.0.0"
 description = ""
 authors = [
+    {name = "Rob Zeeman",email = "rob.zeeman@di.huc.knaw.nl"},
     {name = "Meindert Kroese",email = "meindert.kroese@di.huc.knaw.nl"},
     {name = "Jarno Bakker",email = "jarno.bakker@di.huc.knaw.nl"}
 ]

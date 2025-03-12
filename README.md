@@ -53,5 +53,11 @@ The `overwrite` parameter can be used to re-create the index if it already exist
 Now we can import our json files in Elasticsearch.
 
 ```python
-indexer.
+indexer.import_folder("json-files")
+```
+
+or
+
+```python
+indexer.import_files(["json-files/a.json", "json-files/b.json"])
 ```

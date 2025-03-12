@@ -81,3 +81,13 @@ class Indexer:
                 actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:
         result = bulk(es, actions)
+
+
+    def import_folder(self, folder: str):
+        """
+        Import all files in a folder.
+        :param folder:
+        :return:
+        """
+        input_list = glob.glob(f'{folder}/*')
+        self.import_files(input_list)

@@ -90,13 +90,40 @@ type="text"
 path="jmes:tag"
 type="text"
 
-[index.facet.value]
+[index.facet.the_answer]
 path="jmes:value"
 type="number"
 
 [index.facet.nested_value]
 path="jmes:nested.object.value"
 type="number"
+```
+
+This will turn the following input file:
+
+```json
+{
+  "id": 0,
+  "title": "This is a test",
+  "tag": "label",
+  "value": 42,
+  "nested": {
+    "object": {
+      "value": 7
+    }
+  }
+}
+```
+
+Into this output file (for inserting in ES):
+```json
+{
+  "id": 0,
+  "title": "This is a test",
+  "tag": "label",
+  "the_answer": 42,
+  "nested_value": 7
+}
 ```
 
 We will now go over each field and see what it means.

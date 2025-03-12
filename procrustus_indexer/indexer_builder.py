@@ -1,3 +1,7 @@
+"""
+Builder for the Indexer class. Creates all requried components based on the configuration and
+returns the final Indexer.
+"""
 import tomllib
 
 from elasticsearch import Elasticsearch

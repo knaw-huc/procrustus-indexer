@@ -1,3 +1,6 @@
+"""
+Contains a Parser for JSON files.
+"""
 import json
 from typing import IO
 
@@ -6,7 +9,9 @@ import jmespath
 from procrustus_indexer.parsers import Parser
 
 class JsonParser(Parser):
-
+    """
+    JSON-specific Parser class.
+    """
     config: dict
 
     def __init__(self, config: dict):
@@ -16,10 +21,11 @@ class JsonParser(Parser):
 
 
     @staticmethod
-    def resolve_path(rec, path):
+    def resolve_path(data: dict, path: str):
         if path.startswith("jmes:"):
             # for jmes: 5:
-            return jmespath.search(path[5:], rec)
+            return jmespath.search(path[5:], data)
+        return None
 
 
     def parse_file(self, file: IO) -> dict:

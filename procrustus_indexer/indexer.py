@@ -1,10 +1,19 @@
+"""
+Indexer class
+"""
+import glob
+
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
-
 from procrustus_indexer.parsers import Parser
 
 
 class Indexer:
+    """
+    Class used for creating Elasticsearch indices and indexing documents into them based on a toml
+    configuration.
+    """
+
     es: Elasticsearch = None
     config: dict
     index_name: str
@@ -75,11 +84,11 @@ class Indexer:
         actions = []
         for inv in files:
             doc = {}
-            with open(inv) as f:
+            with open(inv, encoding='utf-8') as f:
                 doc = self.parser.parse_file(f)
                 actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:
-        result = bulk(self.es, actions)
+        bulk(self.es, actions)
 
 
     def import_folder(self, folder: str):

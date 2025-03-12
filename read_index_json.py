@@ -50,8 +50,8 @@ class Indexer:
         properties = {}
         for facet_name in self.config['index']['facet'].keys():
             facet = self.config["index"]["facet"][facet_name]
-            type = facet.get('type', 'text')
-            if type == 'text':
+            property_type = facet.get('type', 'text')
+            if property_type == 'text':
                 properties[facet_name] = {
                     'type': 'text',
                     'fields': {
@@ -61,15 +61,15 @@ class Indexer:
                         },
                     }
                 }
-            elif type == 'keyword':
+            elif property_type == 'keyword':
                 properties[facet_name] = {
                     'type': 'keyword',
                 }
-            elif type == 'number':
+            elif property_type == 'number':
                 properties[facet_name] = {
                     'type': 'integer',
                 }
-            elif type == 'date':
+            elif property_type == 'date':
                 properties[facet_name] = {
                     'type': 'date',
                 }
@@ -79,7 +79,7 @@ class Indexer:
         }
 
         settings = {
-            'number_of_shards': 2,
+            'number_of_shards': 1,
             'number_of_replicas': 0
         }
 

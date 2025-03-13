@@ -28,7 +28,9 @@ class JsonParser(Parser):
             return jmespath.search(path, data)
         elif type == 'jsonpath':
             exp = parse(path)
-            return exp.find(data)[0].value
+            res = exp.find(data)
+            if len(res) > 0:
+                return res[0].value
         return None
 
 

@@ -66,3 +66,12 @@ def test_parse_incomplete():
         result = parser.parse_file(f)
 
     assert result['tag'] == None
+
+def test_parse_incomplete_jsonpath():
+    config = get_config('test-jsonpath.toml')
+    parser = JsonParser(config)
+
+    with open("tests/test_files/json_files/incomplete.json", "rb") as f:
+        result = parser.parse_file(f)
+
+    assert result['tag'] == None

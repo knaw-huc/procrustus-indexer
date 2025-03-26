@@ -50,19 +50,18 @@ class Indexer:
         '''
         with PySaxonProcessor(license=False) as proc:
             xpproc = proc.new_xpath_processor()
-            ns_name = self.config['index']['input']['ns'].keys()[0]
+            ns_name = list(self.config['index']['input']['ns'].keys())[0]
             ns_adress = self.config['index']['input']['ns'][ns_name]
             xpproc.declare_namespace(ns_name,ns_adress)
-            path_id = self.config['index']['id']['path']
-            xpproc.set_context(file_name=infile)
-            
-            doc_id = resolve_path(infile, path_id)
+            path_id = self.config['index']['id']['path'][6:]
+            node = proc.parse_xml(xml_text=infile)
+            xpproc.set_context(xdm_item=node)
+            doc_id = xpproc.evaluate_single(f"{path_id}").get_string_value()
             doc = {'id': doc_id}
             for key in self.config['index']['facet'].keys():
                 facet = self.config["index"]["facet"][key]
-                path_facet = facet["path"]
-                # need to figure how exactly use this function
-                doc[key] = xpproc.evaluate_single(f"string(({path_facet},'unknown')[1])").get_string_value()
+                path_facet = facet["path"][6:]
+                doc[key] = xpproc.evaluate_single(f"{path_facet}").get_string_value()
             return doc
 
 
@@ -110,6 +109,7 @@ class Indexer:
             'number_of_replicas': 0
         }
 
+        # misschien aanpassen naar create_if_not_exists
         self.es.indices.create(index=self.index_name, mappings=mappings, settings=settings)
         return mappings
 
@@ -127,11 +127,11 @@ class Indexer:
         for inv in files:
             doc = {}
             with open(inv) as f:
-                if extension=='json':
+                if self.extension=='json':
                     d = json.load(f)
                     # add to index list
                     doc = self.parse_json(d)
-                elif extension=='xml':
+                elif self.extension=='xml':
                     d = f.read()                   
                     doc = self.parse_xml(d)
                 else:

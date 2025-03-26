@@ -123,7 +123,7 @@ class Indexer:
         """
         es = Elasticsearch()
         actions = []
-        self.extension = config['index']['input']['format']
+        self.extension = self.config['index']['input']['format']
         for inv in files:
             doc = {}
             with open(inv) as f:
@@ -131,10 +131,14 @@ class Indexer:
                     d = json.load(f)
                     # add to index list
                     doc = self.parse_json(d)
-                elif estension=='xml':
+                elif extension=='xml':
+                    d = f.read()                   
                     doc = self.parse_xml(d)
+                else:
                 # check if doc exists?
                 # just in case someone tries to index something else than json or xml?
+                    stderr(f'we dont do {extension} yet.')
+                    end_prog(1)
                 actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:
         result = bulk(es, actions)

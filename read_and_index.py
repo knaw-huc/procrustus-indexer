@@ -78,7 +78,6 @@ class Indexer:
         for key in self.config['index']['facet'].keys():
             qres = g.query(self.config["index"]["facet"][key]['path'])
             for row in qres:
-                stderr(f'row: {row}')
                 try:
                     doc['key'] = row.key
                 except:

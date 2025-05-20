@@ -3,9 +3,16 @@ import argparse
 import glob
 import locale
 import sys
+import tomllib
 from datetime import datetime
 
+from elasticsearch import Elasticsearch
+
 from procrustus_indexer import build_indexer
+from procrustus_indexer.extractors import FileExtractor
+from procrustus_indexer.loaders import ElasticsearchLoader
+from procrustus_indexer.pipeline import Pipeline
+from procrustus_indexer.transformers import JsonParser
 
 locale.setlocale(locale.LC_ALL, 'nl_NL')
 
@@ -49,12 +56,38 @@ def main():
             end_prog(1)
         input_list = [input_file]
 
-    es = Elasticsearch()
+    es = Elasticsearch(hosts="http://localhost:9200", http_auth=('elastic', 'changeme'))
 
-    indexer = build_indexer(toml_file, index, es)
+    # indexer = build_indexer(toml_file, index, es)
+    #
+    # indexer.create_mapping(overwrite=args['force'])
+    # indexer.import_files(input_list)
 
-    indexer.create_mapping(overwrite=args['force'])
-    indexer.import_files(input_list)
+    with open(toml_file, "rb") as f:
+        config = tomllib.load(f)
+
+    extractor = FileExtractor(
+        folder_path=input_dir,
+        glob_pattern="*.json",
+    )
+
+    mapping = {}
+
+    for key in config['index']['facet'].keys():
+        facet = config['index']['facet'][key]
+        mapping[key] = facet['path']
+
+    transformer = JsonParser(mapping=mapping)
+
+    loader = ElasticsearchLoader(
+        es, config, index, 'id'
+    )
+
+    pipeline = Pipeline(extractor, [transformer], loader)
+
+    loader.setup()
+
+    pipeline.run_pipeline()
 
     end_prog(0)
 

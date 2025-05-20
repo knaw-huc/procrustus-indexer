@@ -5,7 +5,7 @@ import json
 from typing import IO
 
 import jmespath
-from jsonpath_ng import jsonpath, parse
+from jsonpath_ng import parse
 
 from procrustus_indexer.parsers import Parser
 
@@ -26,7 +26,7 @@ class JsonParser(Parser):
         type, path = path.split(":", 1)
         if type == 'jmes':
             return jmespath.search(path, data)
-        elif type == 'jsonpath':
+        if type == 'jsonpath':
             exp = parse(path)
             res = exp.find(data)
             if len(res) > 0:

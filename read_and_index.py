@@ -7,11 +7,11 @@ import glob
 import jmespath
 import json
 import locale
-
 locale.setlocale(locale.LC_ALL, 'nl_NL')
+from rdflib import Graph
 import sys
-import tomllib
 from saxonche import PySaxonProcessor
+import tomllib
 
 
 class Indexer:
@@ -64,6 +64,26 @@ class Indexer:
                 doc[key] = xpproc.evaluate_single(f"{path_facet}").get_string_value()
             return doc
 
+    def parse_sparql(self, infile: str) -> dict:
+        """
+        Process an input SPARQL file according to config and return resulting dict.
+        :param infile:
+        :return:
+        """
+        g = Graph()
+        g.parse(data=infile, format="turtle")
+        path_id = self.config['index']['id']['path']
+        path_id = g.query(path_id)
+        doc = { 'id': path_id }
+        for key in self.config['index']['facet'].keys():
+            qres = g.query(self.config["index"]["facet"][key]['path'])
+            for row in qres:
+                stderr(f'row: {row}')
+                try:
+                    doc['key'] = row.key
+                except:
+                    pass
+        return doc
 
     def create_mapping(self, overwrite: bool = False) -> dict:
         """
@@ -134,6 +154,9 @@ class Indexer:
                 elif self.extension=='xml':
                     d = f.read()                   
                     doc = self.parse_xml(d)
+                elif self.extension=='ttl':
+                    d = f.read()                   
+                    doc = self.parse_sparql(d)
                 else:
                 # check if doc exists?
                 # just in case someone tries to index something else than json or xml?

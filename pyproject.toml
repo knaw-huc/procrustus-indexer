@@ -14,7 +14,9 @@ dependencies = [
     "elasticsearch (>=8.17.2,<9.0.0)",
     "pytest (>=8.3.5,<9.0.0)",
     "pylint (>=3.3.5,<4.0.0)",
-    "jsonpath-ng (>=1.7.0,<2.0.0)"
+    "jsonpath-ng (>=1.7.0,<2.0.0)",
+    "rdflib>=7.1.4",
+    "saxonche>=12.7.0",
 ]
 
 

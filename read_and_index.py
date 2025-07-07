@@ -49,19 +49,36 @@ class Indexer:
         when = xpproc.evaluate_single("string((/*:CMD/*:Header/*:MdCreationDate/@clariah:epoch,/*:CMD/*:Header/*:MdCreationDate,'unknown')[1])").get_string_value()
         '''
         with PySaxonProcessor(license=False) as proc:
+            doc = None
             xpproc = proc.new_xpath_processor()
-            ns_name = list(self.config['index']['input']['ns'].keys())[0]
-            ns_adress = self.config['index']['input']['ns'][ns_name]
-            xpproc.declare_namespace(ns_name,ns_adress)
-            path_id = self.config['index']['id']['path'][6:]
             node = proc.parse_xml(xml_text=infile)
             xpproc.set_context(xdm_item=node)
-            doc_id = xpproc.evaluate_single(f"{path_id}").get_string_value()
-            doc = {'id': doc_id}
-            for key in self.config['index']['facet'].keys():
-                facet = self.config["index"]["facet"][key]
-                path_facet = facet["path"][6:]
-                doc[key] = xpproc.evaluate_single(f"{path_facet}").get_string_value()
+            for key in self.config['index']['input']['ns'].keys():
+                xpproc.declare_namespace(key,self.config['index']['input']['ns'][key])
+            do = True
+            if 'when' in self.config['index']['input'].keys():
+                do = xpproc.effective_boolean_value(f"{self.config['index']['input']['when']}")
+            if do:
+                path_id = self.config['index']['id']['path']
+                doc_id = xpproc.evaluate_single(f"{path_id}").get_string_value() 
+                doc = {'id': doc_id}
+                for key in self.config['index']['facet'].keys():
+                    facet = self.config["index"]["facet"][key]
+                    path_facet = facet["path"]
+                    cardinality="list"
+                    if ('cardinality' in facet.keys()):
+                        cardinality = facet['cardinality']
+                    if cardinality == 'single':
+                        val = xpproc.evaluate_single(f"{path_facet}").get_string_value()
+                        if val.strip() != '':
+                            doc[key] = val
+                    else:
+                        res = []
+                        for item in xpproc.evaluate(f"{path_facet}"):
+                            val = item.get_string_value()
+                            if val.strip() != '':
+                                res.append(val)
+                        doc[key] = res
             return doc
 
     def parse_sparql(self, infile: str) -> dict:
@@ -140,7 +157,7 @@ class Indexer:
         :param index: Elasticsearch index
         :return:
         """
-        es = Elasticsearch()
+        #es = Elasticsearch()
         actions = []
         self.extension = self.config['index']['input']['format']
         for inv in files:
@@ -159,11 +176,13 @@ class Indexer:
                 else:
                 # check if doc exists?
                 # just in case someone tries to index something else than json or xml?
-                    stderr(f'we dont do {extension} yet.')
+                    stderr(f'we don\'t do {extension} yet.')
                     end_prog(1)
-                actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
+                if doc:
+                    actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:
-        result = bulk(es, actions)
+        print(json.dumps(actions))
+        bulk(self.es, actions)
 
 
 def resolve_path(rec, path):
@@ -206,7 +225,6 @@ def main():
         config = tomllib.load(f)
 
     input_dir = args['directory']
-    index = args['index']
     extension = config['index']['input']['format']
     stderr(f'extension: {extension}')
     input_list = glob.glob(f'{input_dir}/*.{extension}')
@@ -217,7 +235,15 @@ def main():
             end_prog(1)
         input_list = [args['input_file']]
 
-    indexer = Indexer(Elasticsearch(), config, index)
+    index = args['index']    
+    if 'name' in config['index']:
+        index = config['index']['name']
+
+    host="http://localhost:9200/"
+    if 'host' in config['index']:
+        host = config['index']['host']
+
+    indexer = Indexer(Elasticsearch(hosts=host), config, index)
 
     indexer.create_mapping(overwrite=args['force'])
     indexer.import_files(input_list)

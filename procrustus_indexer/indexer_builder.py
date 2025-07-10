@@ -6,7 +6,7 @@ import tomllib
 
 from elasticsearch import Elasticsearch
 from procrustus_indexer import Indexer
-from procrustus_indexer.parsers import JsonParser
+from procrustus_indexer.parsers import JsonParser,XmlParser,RdfParser
 
 
 def build_indexer(config_file: str, es_index: str, es_client: Elasticsearch) -> Indexer:
@@ -23,6 +23,10 @@ def build_indexer(config_file: str, es_index: str, es_client: Elasticsearch) -> 
     input_format = config["index"]["input"]["format"]
     if input_format == "json":
         parser = JsonParser(config)
+    elif input_format == "xml":
+        parser = XmlParser(config)
+    elif input_format == "rdf":
+        parser = RdfParser(config)
     else:
         raise ValueError(f"Invalid input format '{input_format}'")
 

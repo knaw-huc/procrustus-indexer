@@ -48,14 +48,16 @@ def main():
     with open(toml_file, "rb") as f:
         config = tomllib.load(f)
 
+    for key in config['index']['facet'].keys():
+                    facet = config["index"]["facet"][key]
+                    path_facet = facet["path"]
+
     input_dir = args['directory']
     extension = config['index']['input']['format']
-    stderr(f'extension: {extension}')
     input_list = glob.glob(f'{input_dir}/*.{extension}')
     if len(input_list) == 0:
         input_file = args['inputfile']
         if input_file is None:
-            stderr(ap.print_help())
             end_prog(1)
         input_list = [args['input_file']]
 

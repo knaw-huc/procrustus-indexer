@@ -47,7 +47,6 @@ class XmlParser(Parser):
         '''
         with PySaxonProcessor(license=False) as proc:
             xml_text = file.read()
-            print(f'xml:\n{xml_text}')
             doc = None
             xpproc = proc.new_xpath_processor()
             node = proc.parse_xml(xml_text=xml_text)

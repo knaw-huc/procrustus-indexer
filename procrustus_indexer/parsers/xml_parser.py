@@ -46,9 +46,11 @@ class XmlParser(Parser):
         when = xpproc.evaluate_single("string((/*:CMD/*:Header/*:MdCreationDate/@clariah:epoch,/*:CMD/*:Header/*:MdCreationDate,'unknown')[1])").get_string_value()
         '''
         with PySaxonProcessor(license=False) as proc:
+            xml_text = file.read()
+            print(f'xml:\n{xml_text}')
             doc = None
             xpproc = proc.new_xpath_processor()
-            node = proc.parse_xml(file)
+            node = proc.parse_xml(xml_text=xml_text)
             xpproc.set_context(xdm_item=node)
             for key in self.config['index']['input']['ns'].keys():
                 xpproc.declare_namespace(key,self.config['index']['input']['ns'][key])

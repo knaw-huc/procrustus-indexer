@@ -58,11 +58,15 @@ class XmlParser(Parser):
                 do = xpproc.effective_boolean_value(f"{self.config['index']['input']['when']}")
             if do:
                 path_id = self.config['index']['id']['path']
+                if path_id.startswith('xpath:'):
+                    path_id = path_id[6:]
                 doc_id = xpproc.evaluate_single(f"{path_id}").get_string_value() 
                 doc = {'id': doc_id}
                 for key in self.config['index']['facet'].keys():
                     facet = self.config["index"]["facet"][key]
                     path_facet = facet["path"]
+                    if path_facet.startswith('xpath:'):
+                        path_facet = path_facet[6:]
                     cardinality="list"
                     if ('cardinality' in facet.keys()):
                         cardinality = facet['cardinality']

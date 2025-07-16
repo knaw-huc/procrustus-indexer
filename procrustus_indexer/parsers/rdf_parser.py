@@ -38,7 +38,7 @@ class RdfParser(Parser):
 
     def parse_file(self, file: IO) -> dict:
         g = Graph()
-        g.parse(file) #, format="rdf")
+        g.parse(file)
         path_id_query = self.config['index']['id']['path']
         query_res  = g.query(path_id_query)
         for row in query_res :

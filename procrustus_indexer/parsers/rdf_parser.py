@@ -1,5 +1,5 @@
 """
-Contains a Parser for JSON files.
+Contains a Parser for RDF files.
 """
 import json
 from typing import IO
@@ -8,6 +8,8 @@ import jmespath
 from jsonpath_ng import jsonpath, parse
 
 from procrustus_indexer.parsers import Parser
+
+from rdflib import Graph
 
 class RdfParser(Parser):
     """
@@ -36,15 +38,17 @@ class RdfParser(Parser):
 
     def parse_file(self, file: IO) -> dict:
         g = Graph()
-        g.parse(file, format="rdf")
-        path_id = self.config['index']['id']['path']
-        path_id = g.query(path_id)
+        g.parse(file) #, format="rdf")
+        path_id_query = self.config['index']['id']['path']
+        query_res  = g.query(path_id_query)
+        for row in query_res :
+            path_id = str(row.n)
         doc = { 'id': path_id }
         for key in self.config['index']['facet'].keys():
             qres = g.query(self.config["index"]["facet"][key]['path'])
             for row in qres:
                 try:
-                    doc['key'] = row.key
+                    doc[key] = str(row.n)
                 except:
                     pass
         return doc

@@ -1,0 +1,15 @@
+[index]
+full_text="yes"
+
+[index.input]
+format="rdf"
+
+[index.input.ns]
+cmd="http://www.clarin.eu/cmd/"
+
+[index.id]
+path="SELECT ?n {?d a  <http://schema.org/Dataset>. BIND (REPLACE(str($d), '.*/items/(.*)', '$1') AS ?n)}"
+
+[index.facet.title]
+path="SELECT ?n {?d a <http://schema.org/Dataset> ; <http://schema.org/name> ?n .}"
+

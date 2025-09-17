@@ -1,0 +1,61 @@
+<!-- templates/login.html-->
+
+<html>
+
+<head>
+    <title>Handling of http get and post request</title>
+
+    <!-- <script>
+        const formElement = document.querySelector('#form')
+        const getFormJSON = (form) => {
+        const data = new FormData(form);
+        return Array.from(data.keys()).reduce((result, key) => {
+                result[key] = data.get(key);
+                return result;
+            }, {});
+        };
+        // handle the form submission event, prevent default form behaviour, check validity, convert form to JSON
+        const handler = (event) => {
+            event.preventDefault();
+            const valid = formElement.reportValidity();
+            if (valid) {
+                const result = getFormJSON(formElement);
+                console.log(result)
+            }
+        }   
+        formElement.addEventListener("submit", handler)
+    </script> -->
+</head>
+
+<body>
+
+        <h2>Handle POST Request</h2>
+        <form method="POST" id="form"
+              action="{{ url_for('post') }}">
+            <p> <label for="filename">Config File:</label></p>
+            <p>
+            <input type="text"
+                   name="configfile"
+                   placeholder="Filename"/>
+            </p>
+              <p> <label for="config">or Config Data:</label></p>
+              <p>
+            <textarea  rows="10" cols="60" 
+                   id="config"
+                   type="text"
+                   name="config"
+                   placeholder="Config"></textarea>
+              </p>
+            <p> <label for="filetext">or Text to be indexed:</label></p>
+            <p>
+            <textarea
+                   rows="5"
+                   cols="80" 
+                   name="filetext"
+                   placeholder="Filetext"></textarea>
+            </p>
+            <button type="submit">submit</button>
+        </form>
+</body>
+
+</html>

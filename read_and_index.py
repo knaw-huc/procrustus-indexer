@@ -13,9 +13,9 @@ from rdflib import Graph
 import sys
 from saxonche import PySaxonProcessor
 import tomllib
-from procrustus_indexer import build_indexer,Indexer
+from procrustus_indexer import build_indexer
 
-ELASTIC_PASSWORD = ''
+ELASTIC_PASSWORD = 'D6zZmoF8'
 
 
 def stderr(text,nl="\n"):
@@ -40,7 +40,7 @@ def arguments():
     ap.add_argument('-i', '--index', default='test-index')
     ap.add_argument('--force', action='store_true')
     args = vars(ap.parse_args())
-    return args, ap
+    return args
 
 def read_and_index(toml_file: str, input_dir: str| None=None, input_file: str| None=None, index_name: str | None=None, index_host: str | None=None, force: bool | None=True):
     stderr(datetime.today().strftime("start: %H:%M:%S"))
@@ -80,10 +80,13 @@ def read_and_index(toml_file: str, input_dir: str| None=None, input_file: str| N
 
 
 def main():
-    stderr(datetime.today().strftime("start: %H:%M:%S"))
-    args, ap = arguments()
-    read_and_index(toml_file=args['tomlfile'], input_dir=args['directory'], index_name= args['index'], force=args['force'])
-    end_prog(0)
+    args = arguments()
+    res = read_and_index(toml_file=args['tomlfile'], input_dir=args['directory'], index_name= args['index'], force=args['force'])
+    if res=='OK':
+        end_prog(0)
+    else:
+        stderr(res)
+        end_prog(1)
 
 
 if __name__ == "__main__":

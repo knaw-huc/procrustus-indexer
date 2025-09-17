@@ -15,7 +15,7 @@ from saxonche import PySaxonProcessor
 import tomllib
 from procrustus_indexer import build_indexer
 
-ELASTIC_PASSWORD = ''
+ELASTIC_PASSWORD = 'D6zZmoF8'
 
 
 def stderr(text,nl="\n"):
@@ -71,7 +71,6 @@ def read_and_index(toml_file: str, input_dir: str| None=None, input_file: str| N
         host = index_host
     stderr(f"HOST[{host}]")
 
-#    indexer = Indexer(Elasticsearch(hosts=host,verify_certs=False), config, index)
     indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host,basic_auth=("elastic", ELASTIC_PASSWORD)))
 
     indexer.create_mapping(overwrite=force)

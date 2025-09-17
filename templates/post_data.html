@@ -3,28 +3,7 @@
 <html>
 
 <head>
-    <title>Handling of http get and post request</title>
-
-    <!-- <script>
-        const formElement = document.querySelector('#form')
-        const getFormJSON = (form) => {
-        const data = new FormData(form);
-        return Array.from(data.keys()).reduce((result, key) => {
-                result[key] = data.get(key);
-                return result;
-            }, {});
-        };
-        // handle the form submission event, prevent default form behaviour, check validity, convert form to JSON
-        const handler = (event) => {
-            event.preventDefault();
-            const valid = formElement.reportValidity();
-            if (valid) {
-                const result = getFormJSON(formElement);
-                console.log(result)
-            }
-        }   
-        formElement.addEventListener("submit", handler)
-    </script> -->
+    <title>Handling of post request</title>
 </head>
 
 <body>
@@ -46,7 +25,7 @@
                    name="config"
                    placeholder="Config"></textarea>
               </p>
-            <p> <label for="filetext">or Text to be indexed:</label></p>
+            <p> <label for="filetext">Text to be indexed:</label></p>
             <p>
             <textarea
                    rows="5"

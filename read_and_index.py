@@ -15,7 +15,7 @@ from saxonche import PySaxonProcessor
 import tomllib
 from procrustus_indexer import build_indexer
 
-ELASTIC_PASSWORD = 'D6zZmoF8'
+ELASTIC_PASSWORD = ''
 
 
 def stderr(text,nl="\n"):

@@ -76,7 +76,10 @@ def read_and_index(toml_file: str, input_dir: str| None=None, input_file: str| N
     indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host,basic_auth=(auth, password)))
 
     indexer.create_mapping(overwrite=force)
-    indexer.import_files(input_list)
+    try:
+        indexer.import_files(input_list)
+    except:
+        return "File to be indexed not valid!"
     return "OK"
 
 

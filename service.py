@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask,render_template,request, jsonify
+from flask import Flask,render_template,request, jsonify, make_response
 import sys
 import tomllib
 import read_and_index
@@ -23,15 +23,21 @@ def get():
     directory = request.args.get("dir")
     filename = request.args.get("file")
     if config==None or config=="":
-        return render_template('result.html', result="No config given")
+        return handle_response("No config given",400)
     if (directory==None or directory=="") and (filename==None or filename==""):
-        return render_template('result.html', result="No file or dir given")
+        return handle_response("No file or dir given",400)
     res = read_and_index.read_and_index(toml_file=config,input_dir=directory,input_file=filename)
     if res=='OK':
-        result = 'succes!'
+        return handle_response('succes!', 200)
     else:
-        result = f'failed! {res}'
-    return render_template('result.html', result=result)
+        return handle_response(f'failed! {res}',200)
+
+
+def handle_response(text,code=400):
+    resp = make_response(render_template('result.html',result=text), code)
+    resp.headers['Content-Type'] = 'text/html'
+    return resp
+
 
 @app.route('/index', methods=['POST'])
 def post():
@@ -41,23 +47,24 @@ def post():
         data['config'] = request.form['config']
         data['filetext'] = request.form['filetext']
     res = ''
-    config = ''
+    config = {}
     configfile = data['configfile'].strip()
     if configfile!='':
         if not configfile.endswith('.toml'):
             configfile = f'{configfile}.toml'
-        extension = tomllib.load(f)['index']['input']['format']
+        with open(configfile,'rb') as toml:
+            config = tomllib.load(toml)
+        extension = config['index']['input']['format']
     else:
         res += "No configfile given\n"
-    if config.strip()=='':
+    if config=={}:
         config = data['config'].strip()
-        res += f'{config}\n'
         if config=='':
-            return render_template('result.html', result=f"<p>{res}<br/>No config given, can't index</p>")
+            return handle_response("No config given, can't index")
         extension = tomllib.loads(config)['index']['input']['format']
     tobeindexed = data['filetext'].strip()
     if tobeindexed=='':
-        return render_template('result.html', result='{res}No data to be indexed')
+        return handle_response(f'No data to be indexed')
     try:
         directory = os.environ['PROCRUSTUS_TEMP_DIR']
     except:
@@ -71,13 +78,10 @@ def post():
         uitvoer.write(tobeindexed)
     res = read_and_index.read_and_index(toml_file=configfile,input_file=datafile,index_name='test-index',force=True)
     if res=='OK':
-        result = 'succes!'
+        return handle_response('succes!', 200)
     else:
-        result = f'failed! {res}'
-    return render_template('result.html', result=result)
+        return handle_response(f'failed! {res}'), 400
 
 if __name__ == '__main__':
       app.run(host='0.0.0.0', port=80)
-
-
 

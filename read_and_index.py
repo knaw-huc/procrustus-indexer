@@ -10,12 +10,11 @@ import locale
 locale.setlocale(locale.LC_ALL, 'nl_NL')
 import os
 from rdflib import Graph
+import re
 import sys
 from saxonche import PySaxonProcessor
 import tomllib
 from procrustus_indexer import build_indexer
-
-ELASTIC_PASSWORD = 'D6zZmoF8'
 
 
 def stderr(text,nl="\n"):
@@ -66,12 +65,15 @@ def read_and_index(toml_file: str, input_dir: str| None=None, input_file: str| N
 
     host = os.getenv("ES_URL", "http://localhost:9200/")
     if 'host' in config['index']:
-        host = config['index']['host']
+        md = re.search(r'^([^/]+//)([^:]+):([^@]+)@(.+)$',config['index']['host'])
+        host = f'{md[1]}{md[4]}'
+        auth = md[2]
+        password = md[3]
     if index_host:
         host = index_host
     stderr(f"HOST[{host}]")
 
-    indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host,basic_auth=("elastic", ELASTIC_PASSWORD)))
+    indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host,basic_auth=(auth, password)))
 
     indexer.create_mapping(overwrite=force)
     indexer.import_files(input_list)

@@ -16,6 +16,8 @@ class XmlParser(Parser):
         self.processor = PySaxonProcessor(license=False)
         self.xp_processor = self.processor.new_xpath_processor()
 
+        for key in self.config['index']['input']['ns'].keys():
+            self.xp_processor.declare_namespace(key, self.config['index']['input']['ns'][key])
 
     def supported_types(self) -> List[str]:
         return ["xml"]
@@ -46,10 +48,9 @@ class XmlParser(Parser):
         :return:
         """
         node = self.processor.parse_xml(xml_text=file)
-        tmp_processor = self.processor.new_xpath_processor()
-        tmp_processor.set_context(xdm_item=node)
+        self.xp_processor.set_context(xdm_item=node)
         if 'when' in self.config['index']['input'].keys():
-            return tmp_processor.effective_boolean_value(self.config['index']['input']['when'])
+            return self.xp_processor.effective_boolean_value(self.config['index']['input']['when'])
         return True
 
 

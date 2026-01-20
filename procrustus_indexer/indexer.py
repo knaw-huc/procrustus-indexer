@@ -85,6 +85,8 @@ class Indexer:
         for inv in files:
             doc = {}
             with open(inv, encoding='utf-8') as f:
+                if not self.parser.should_process(f):
+                    continue
                 doc = self.parser.parse_file(f)
                 actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
         # add to index:

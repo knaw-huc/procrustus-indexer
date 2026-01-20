@@ -2,7 +2,7 @@
 Contains a Parser for JSON files.
 """
 import json
-from typing import IO
+from typing import IO, List
 
 import jmespath
 from jsonpath_ng import jsonpath, parse
@@ -13,13 +13,16 @@ class JsonParser(Parser):
     """
     JSON-specific Parser class.
     """
-    config: dict
+    def supported_types(self) -> List[str]:
+        return ["json"]
 
-    def __init__(self, config: dict):
-        if config["index"]["input"]["format"] != "json":
-            raise ValueError("JsonParser only supports JSON files")
-        self.config = config
-
+    def should_process(self, file: IO) -> bool:
+        """
+        No conditional checks implemented yet for JSON files.
+        :param file:
+        :return:
+        """
+        return True
 
     @staticmethod
     def resolve_path(data: dict, path: str):

@@ -12,9 +12,9 @@ class Parser(ABC):
     config: dict
 
     def __init__(self, config: dict) -> None:
-        format = config['index']['input']['format']
-        if format not in self.supported_types():
-            raise ValueError(f"Format {format} not supported")
+        file_format = config['index']['input']['format']
+        if file_format not in self.supported_types():
+            raise ValueError(f"Format {file_format} not supported")
         self.config = config
 
     def supported_types(self) -> List[str]:

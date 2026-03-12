@@ -1,3 +1,6 @@
+"""
+Contains a Parser for XML files.
+"""
 from typing import IO, List
 from saxonche import PySaxonProcessor, PyXPathProcessor
 
@@ -52,7 +55,7 @@ class XmlParser(Parser):
         self.xp_processor.set_context(xdm_item=node)
         if 'when' in self.config['index']['input'].keys():
             when = self.config['index']['input']['when']
-            return self.xp_processor.effective_boolean_value(self.config['index']['input']['when'])
+            return self.xp_processor.effective_boolean_value(when)
         return True
 
 

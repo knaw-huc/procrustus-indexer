@@ -1,25 +1,34 @@
+"""
+Contains a CLI program for using the indexer.
+"""
 # -*- coding: utf-8 -*-
 import argparse
 from datetime import datetime
-from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk
 import glob
-import jmespath
-import json
 import locale
-locale.setlocale(locale.LC_ALL, 'nl_NL')
-from rdflib import Graph
 import sys
-from saxonche import PySaxonProcessor
 import tomllib
-from procrustus_indexer import Indexer, build_indexer
+from elasticsearch import Elasticsearch
+from procrustus_indexer import build_indexer
+
+locale.setlocale(locale.LC_ALL, 'nl_NL')
 
 
 def stderr(text):
-    sys.stderr.write("{}\n".format(text))
+    """
+    Print a message to STDERR.
+    :param text:
+    :return:
+    """
+    sys.stderr.write(f"{text}\n")
 
 
 def end_prog(code=0):
+    """
+    Shutdown and notify the user.
+    :param code:
+    :return:
+    """
     if code != 0:
         stderr(f'afgebroken met code: {code}')
     stderr(datetime.today().strftime("einde: %H:%M:%S"))
@@ -27,6 +36,10 @@ def end_prog(code=0):
 
 
 def arguments():
+    """
+    Define the arguments required for the CLI program.
+    :return:
+    """
     ap = argparse.ArgumentParser(description='Read json and feed to ElasticSearch')
     ap.add_argument('-d', '--directory',
                     help="input directory")
@@ -42,6 +55,10 @@ def arguments():
 
 
 def main():
+    """
+    Main program logic.
+    :return:
+    """
     stderr(datetime.today().strftime("start: %H:%M:%S"))
     args, ap = arguments()
     toml_file = args['tomlfile']
@@ -59,7 +76,7 @@ def main():
             end_prog(1)
         input_list = [args['input_file']]
 
-    index = args['index']    
+    index = args['index']
     if 'name' in config['index']:
         index = config['index']['name']
 

@@ -2,7 +2,7 @@
 Contains the Parser ABC.
 """
 from abc import ABC
-from typing import IO
+from typing import IO, List
 
 
 class Parser(ABC):

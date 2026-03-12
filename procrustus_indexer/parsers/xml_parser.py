@@ -40,22 +40,30 @@ class XmlParser(Parser):
         return self.xp_processor.evaluate_single(path).get_string_value().strip()
 
 
-    def should_process_file(self, file: IO) -> bool:
+    def should_process(self, file: IO) -> bool:
         """
         Check if the file meets the conditions for processing. XML files can use an XPath expression
         resulting in a boolean for this.
         :param file:
         :return:
         """
-        node = self.processor.parse_xml(xml_text=file)
+        node = self.processor.parse_xml(xml_text=file.read())
+        file.seek(0)
         self.xp_processor.set_context(xdm_item=node)
         if 'when' in self.config['index']['input'].keys():
+            when = self.config['index']['input']['when']
             return self.xp_processor.effective_boolean_value(self.config['index']['input']['when'])
         return True
 
 
     def parse_file(self, file: IO) -> dict:
-        node = self.processor.parse_xml(xml_text=file)
+        """
+        Parse the XML file
+        :param file:
+        :return:
+        """
+        xml_text = file.read()
+        node = self.processor.parse_xml(xml_text=xml_text)
         self.xp_processor.set_context(xdm_item=node)
 
         for key in self.config['index']['input']['ns'].keys():

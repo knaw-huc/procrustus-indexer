@@ -49,6 +49,8 @@ def arguments():
     ap.add_argument('-f', '--inputfile',
                     help="input file")
     ap.add_argument('-i', '--index', default='test-index')
+    ap.add_argument('-u', '--es_user', default=None, help="Elasticsearch username")
+    ap.add_argument('-p', '--es_password', default=None, help="Elasticsearch password")
     ap.add_argument('--force', action='store_true')
     args = vars(ap.parse_args())
     return args, ap
@@ -84,7 +86,15 @@ def main():
     if 'host' in config['index']:
         host = config['index']['host']
 
-    indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host))
+    basic_auth = None
+
+    es_username = args['es_user']
+    es_password = args['es_password']
+
+    if es_username and es_password:
+        basic_auth = (es_username, es_password)
+
+    indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host, basic_auth=basic_auth, verify_certs=False))
 
     indexer.create_mapping(overwrite=args['force'])
 

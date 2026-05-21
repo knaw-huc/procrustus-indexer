@@ -1,6 +1,7 @@
 """
 Contains a Parser for XML files.
 """
+import json
 from typing import IO, List
 from saxonche import PySaxonProcessor, PyXPathProcessor
 
@@ -26,7 +27,7 @@ class XmlParser(Parser):
         return ["xml"]
 
 
-    def resolve_path(self, path: str, is_array: bool = False):
+    def resolve_path(self, path: str, is_array: bool = False, parse_json: bool = False):
         """
         Resolve an XPATH in the data
         :param path:
@@ -35,12 +36,20 @@ class XmlParser(Parser):
         """
         if is_array:
             res = []
-            for item in self.xp_processor.evaluate(path):
+            items = self.xp_processor.evaluate(path)
+            if items is None:
+                return []
+            for item in items:
                 val = item.get_string_value()
                 if val.strip() != '':
+                    if parse_json:
+                        val = json.loads(val)
                     res.append(val)
             return res
-        return self.xp_processor.evaluate_single(path).get_string_value().strip()
+        tmp = self.xp_processor.evaluate_single(path)
+        if tmp is not None:
+            tmp = tmp.get_string_value().strip()
+        return tmp if tmp != "" else None
 
 
     def should_process(self, file: IO) -> bool:
@@ -79,6 +88,7 @@ class XmlParser(Parser):
             facet = self.config['index']['facet'][key]
             path = facet["path"]
             cardinality = facet["cardinality"]
-            doc[key] = self.resolve_path(path, is_array=cardinality=='list')
+            parse_json = facet.get("parse_json", False)
+            doc[key] = self.resolve_path(path, is_array=cardinality=='list', parse_json=parse_json)
 
         return doc

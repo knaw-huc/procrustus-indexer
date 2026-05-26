@@ -2,10 +2,10 @@
 Contains a Parser for JSON files.
 """
 import json
-from typing import IO
+from typing import IO, List
 
 import jmespath
-from jsonpath_ng import jsonpath, parse
+from jsonpath_ng import parse
 
 from procrustus_indexer.parsers import Parser
 
@@ -13,20 +13,29 @@ class JsonParser(Parser):
     """
     JSON-specific Parser class.
     """
-    config: dict
+    def supported_types(self) -> List[str]:
+        return ["json"]
 
-    def __init__(self, config: dict):
-        if config["index"]["input"]["format"] != "json":
-            raise ValueError("JsonParser only supports JSON files")
-        self.config = config
-
+    def should_process(self, file: IO) -> bool:
+        """
+        No conditional checks implemented yet for JSON files.
+        :param file:
+        :return:
+        """
+        return True
 
     @staticmethod
     def resolve_path(data: dict, path: str):
-        type, path = path.split(":", 1)
-        if type == 'jmes':
+        """
+        Resolve a jsonpath or jmespath in the original json data to retrieve a value.
+        :param data:
+        :param path:
+        :return:
+        """
+        path_type, path = path.split(":", 1)
+        if path_type == 'jmes':
             return jmespath.search(path, data)
-        elif type == 'jsonpath':
+        if path_type == 'jsonpath':
             exp = parse(path)
             res = exp.find(data)
             if len(res) > 0:
@@ -35,6 +44,11 @@ class JsonParser(Parser):
 
 
     def parse_file(self, file: IO) -> dict:
+        """
+        Parse a JSON file and return a dictionary with all parsed data.
+        :param file:
+        :return:
+        """
         data = json.load(file)
 
         path_id = self.config['index']['id']['path']

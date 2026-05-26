@@ -2,19 +2,30 @@
 Contains the Parser ABC.
 """
 from abc import ABC
-from typing import IO
+from typing import IO, List
 
 
 class Parser(ABC):
     """
     An Abstract Base Class for parsers.
     """
-    @staticmethod
-    def resolve_path(data: dict, path: str):
+    config: dict
+
+    def __init__(self, config: dict) -> None:
+        file_format = config['index']['input']['format']
+        if file_format not in self.supported_types():
+            raise ValueError(f"Format {file_format} not supported")
+        self.config = config
+
+    def supported_types(self) -> List[str]:
         """
-        Resolve the path to a specific entry in the data.
-        :param data:
-        :param path:
+        Return the supported types for this parser
+        """
+
+    def should_process(self, file: IO) -> bool:
+        """
+        Check if a file should be processed or not.
+        :param file:
         :return:
         """
 

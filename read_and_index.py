@@ -1,201 +1,34 @@
+"""
+Contains a CLI program for using the indexer.
+"""
 # -*- coding: utf-8 -*-
 import argparse
 from datetime import datetime
-from elasticsearch import Elasticsearch
-from elasticsearch.helpers import bulk
 import glob
-import jmespath
-import json
 import locale
-locale.setlocale(locale.LC_ALL, 'nl_NL')
-from rdflib import Graph
 import sys
-from saxonche import PySaxonProcessor
 import tomllib
+from elasticsearch import Elasticsearch
+from procrustus_indexer import build_indexer
 
-
-class Indexer:
-    es: Elasticsearch = None
-    config: dict
-    index_name: str
-
-    def __init__(self, es: Elasticsearch, config: dict, index_name: str):
-        self.es = es
-        self.config = config
-        self.index_name = index_name
-
-    def parse_json(self, infile: dict) -> dict:
-        """
-        Process an input JSON file according to config and return resulting dict.
-        :param infile:
-        :return:
-        """
-        path_id = self.config['index']['id']['path']
-        doc_id = resolve_path(infile, path_id)
-        doc = {'id': doc_id}
-        for key in self.config['index']['facet'].keys():
-            facet = self.config["index"]["facet"][key]
-            path_facet = facet["path"]
-            doc[key] = resolve_path(infile, path_facet)
-        return doc
-
-    def parse_xml(self, infile: str) -> dict:
-        """
-        Process an input XML file according to config and return resulting dict.
-        :param infile:
-        :return:
-        """
-        '''
-        when = xpproc.evaluate_single("string((/*:CMD/*:Header/*:MdCreationDate/@clariah:epoch,/*:CMD/*:Header/*:MdCreationDate,'unknown')[1])").get_string_value()
-        '''
-        with PySaxonProcessor(license=False) as proc:
-            doc = None
-            xpproc = proc.new_xpath_processor()
-            node = proc.parse_xml(xml_text=infile)
-            xpproc.set_context(xdm_item=node)
-            for key in self.config['index']['input']['ns'].keys():
-                xpproc.declare_namespace(key,self.config['index']['input']['ns'][key])
-            do = True
-            if 'when' in self.config['index']['input'].keys():
-                do = xpproc.effective_boolean_value(f"{self.config['index']['input']['when']}")
-            if do:
-                path_id = self.config['index']['id']['path']
-                doc_id = xpproc.evaluate_single(f"{path_id}").get_string_value() 
-                doc = {'id': doc_id}
-                for key in self.config['index']['facet'].keys():
-                    facet = self.config["index"]["facet"][key]
-                    path_facet = facet["path"]
-                    cardinality="list"
-                    if ('cardinality' in facet.keys()):
-                        cardinality = facet['cardinality']
-                    if cardinality == 'single':
-                        val = xpproc.evaluate_single(f"{path_facet}").get_string_value()
-                        if val.strip() != '':
-                            doc[key] = val
-                    else:
-                        res = []
-                        for item in xpproc.evaluate(f"{path_facet}"):
-                            val = item.get_string_value()
-                            if val.strip() != '':
-                                res.append(val)
-                        doc[key] = res
-            return doc
-
-    def parse_sparql(self, infile: str) -> dict:
-        """
-        Process an input SPARQL file according to config and return resulting dict.
-        :param infile:
-        :return:
-        """
-        g = Graph()
-        g.parse(data=infile, format="turtle")
-        path_id = self.config['index']['id']['path']
-        path_id = g.query(path_id)
-        doc = { 'id': path_id }
-        for key in self.config['index']['facet'].keys():
-            qres = g.query(self.config["index"]["facet"][key]['path'])
-            for row in qres:
-                try:
-                    doc['key'] = row.key
-                except:
-                    pass
-        return doc
-
-    def create_mapping(self, overwrite: bool = False) -> dict:
-        """
-        Create the elasticsearch index mapping according to config and return resulting dict.
-        :return:
-        """
-        if overwrite:
-            self.es.indices.delete(index=self.index_name, ignore=[400, 404])
-
-        properties = {}
-        for facet_name in self.config['index']['facet'].keys():
-            facet = self.config["index"]["facet"][facet_name]
-            type = facet.get('type', 'text')
-            if type == 'text':
-                properties[facet_name] = {
-                    'type': 'text',
-                    'fields': {
-                        'keyword': {
-                            'type': 'keyword',
-                            'ignore_above': 256
-                        },
-                    }
-                }
-            elif type == 'keyword':
-                properties[facet_name] = {
-                    'type': 'keyword',
-                }
-            elif type == 'number':
-                properties[facet_name] = {
-                    'type': 'integer',
-                }
-            elif type == 'date':
-                properties[facet_name] = {
-                    'type': 'date',
-                }
-
-        mappings = {
-            'properties': properties
-        }
-
-        settings = {
-            'number_of_shards': 2,
-            'number_of_replicas': 0
-        }
-
-        # misschien aanpassen naar create_if_not_exists
-        self.es.indices.create(index=self.index_name, mappings=mappings, settings=settings)
-        return mappings
-
-
-    def import_files(self, files: list[str]):
-        """
-        Import files into an elasticsearch index based on the given config.
-        :param files: list of files to import
-        :param index: Elasticsearch index
-        :return:
-        """
-        #es = Elasticsearch()
-        actions = []
-        self.extension = self.config['index']['input']['format']
-        for inv in files:
-            doc = {}
-            with open(inv) as f:
-                if self.extension=='json':
-                    d = json.load(f)
-                    # add to index list
-                    doc = self.parse_json(d)
-                elif self.extension=='xml':
-                    d = f.read()                   
-                    doc = self.parse_xml(d)
-                elif self.extension=='ttl':
-                    d = f.read()                   
-                    doc = self.parse_sparql(d)
-                else:
-                # check if doc exists?
-                # just in case someone tries to index something else than json or xml?
-                    stderr(f'we don\'t do {extension} yet.')
-                    end_prog(1)
-                if doc:
-                    actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
-        # add to index:
-        print(json.dumps(actions))
-        bulk(self.es, actions)
-
-
-def resolve_path(rec, path):
-    if path.startswith("jmes:"):
-        # for jmes: 5:
-        return jmespath.search(path[5:], rec)
+locale.setlocale(locale.LC_ALL, 'nl_NL')
 
 
 def stderr(text):
-    sys.stderr.write("{}\n".format(text))
+    """
+    Print a message to STDERR.
+    :param text:
+    :return:
+    """
+    sys.stderr.write(f"{text}\n")
 
 
 def end_prog(code=0):
+    """
+    Shutdown and notify the user.
+    :param code:
+    :return:
+    """
     if code != 0:
         stderr(f'afgebroken met code: {code}')
     stderr(datetime.today().strftime("einde: %H:%M:%S"))
@@ -203,6 +36,10 @@ def end_prog(code=0):
 
 
 def arguments():
+    """
+    Define the arguments required for the CLI program.
+    :return:
+    """
     ap = argparse.ArgumentParser(description='Read json and feed to ElasticSearch')
     ap.add_argument('-d', '--directory',
                     help="input directory")
@@ -212,12 +49,18 @@ def arguments():
     ap.add_argument('-f', '--inputfile',
                     help="input file")
     ap.add_argument('-i', '--index', default='test-index')
+    ap.add_argument('-u', '--es_user', default=None, help="Elasticsearch username")
+    ap.add_argument('-p', '--es_password', default=None, help="Elasticsearch password")
     ap.add_argument('--force', action='store_true')
     args = vars(ap.parse_args())
     return args, ap
 
 
 def main():
+    """
+    Main program logic.
+    :return:
+    """
     stderr(datetime.today().strftime("start: %H:%M:%S"))
     args, ap = arguments()
     toml_file = args['tomlfile']
@@ -235,7 +78,7 @@ def main():
             end_prog(1)
         input_list = [args['input_file']]
 
-    index = args['index']    
+    index = args['index']
     if 'name' in config['index']:
         index = config['index']['name']
 
@@ -243,9 +86,18 @@ def main():
     if 'host' in config['index']:
         host = config['index']['host']
 
-    indexer = Indexer(Elasticsearch(hosts=host), config, index)
+    basic_auth = None
+
+    es_username = args['es_user']
+    es_password = args['es_password']
+
+    if es_username and es_password:
+        basic_auth = (es_username, es_password)
+
+    indexer = build_indexer(toml_file, index, Elasticsearch(hosts=host, basic_auth=basic_auth, verify_certs=False))
 
     indexer.create_mapping(overwrite=args['force'])
+
     indexer.import_files(input_list)
 
     end_prog(0)

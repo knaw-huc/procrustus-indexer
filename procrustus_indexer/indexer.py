@@ -2,10 +2,13 @@
 Indexer class
 """
 import glob
+from typing import Dict, Type
 
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk, BulkIndexError
 from procrustus_indexer.parsers import Parser
+from procrustus_indexer.transformations.csv_mapping import CsvMapping
+from procrustus_indexer.transformations.transformation import Transformation
 
 
 class Indexer:
@@ -19,13 +22,16 @@ class Indexer:
     index_name: str
     parser: Parser
     required_tokenizers: dict
+    transformations: Dict[str, Type[Transformation]]
 
-    def __init__(self, es: Elasticsearch, config: dict, parser: Parser, index_name: str):
+    def __init__(self, es: Elasticsearch, config: dict, parser: Parser, index_name: str,
+                 transformations: Dict[str, Type[Transformation]] = {}):
         self.es = es
         self.config = config
         self.index_name = index_name
         self.parser = parser
         self.required_tokenizers = {}
+        self.transformations = transformations
 
 
     def create_mapping(self, overwrite: bool = False) -> dict:
@@ -110,6 +116,19 @@ class Indexer:
         return mappings
 
 
+    def add_transformations(self, transformations: Dict[str, Type[Transformation]]):
+        """
+        Add transformations to the indexer. New ones with the same name will overwrite 'default' or
+        existing ones.
+        :param transformations: Dictionary of transformation names to their implementation class
+        :return:
+        """
+        self.transformations = {
+            **self.transformations,
+            **transformations
+        }
+
+
     def get_analyzers(self):
         """
         Get definitions for required analyzers
@@ -153,21 +172,47 @@ class Indexer:
         :param index: Elasticsearch index
         :return:
         """
-        actions = []
+        # E: Extract from files
+        docs = []
         for inf in files:
             doc = {}
             with open(inf, encoding='utf-8') as f:
                 if not self.parser.should_process(f):
                     continue
                 doc = self.parser.parse_file(f)
-                actions.append({'_index': self.index_name, '_id': doc['id'], '_source': doc})
-        # add to index:
+                docs.append(doc)
+
+        # T: Apply transformations
+        docs = (self.transform_document(doc) for doc in docs)
+
+        # L: Load into index:
+        actions = [{'_index': self.index_name, '_id': doc['id'], '_source': doc} for doc in docs]
         try:
             bulk(self.es, actions)
         except BulkIndexError as e:
             print(e)
             for error in e.errors:
                 print(error)
+
+
+    def transform_document(self, doc: dict) -> dict:
+        """
+        Apply transformations to a document
+        :param doc:
+        :return:
+        """
+        for key, value in doc.items():
+            if not key in self.config['index']['facet']: continue
+            conf = self.config['index']['facet'][key]
+            if not "transformations" in conf:
+                continue
+            for transformation in conf['transformations']:
+                tfclass = self.transformations[transformation["type"]]
+                obj = tfclass.get(
+                    **{key: value for key, value in transformation.items() if key != "type"}
+                )
+                doc[key] = obj.transform(value)
+        return doc
 
 
     def import_folder(self, folder: str):

@@ -211,7 +211,10 @@ class Indexer:
                 obj = tfclass.get(
                     **{key: value for key, value in transformation.items() if key != "type"}
                 )
-                doc[key] = obj.transform(value)
+                if type(value) is list:
+                    doc[key] = [obj.transform(v) for v in value]
+                else:
+                    doc[key] = obj.transform(value)
         return doc
 
 

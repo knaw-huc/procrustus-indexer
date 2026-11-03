@@ -237,3 +237,24 @@ apply to both scalar and list facet values. The `csv_file` path is resolved from
 current working directory. Applications can register additional transformation classes with
 `indexer.add_transformations({"name": TransformationClass})`; each class must implement the
 transformation interface and accept the configured options as keyword arguments.
+
+## Development and CI
+
+Install the locked dependencies with Poetry and run the unit tests:
+
+```sh
+poetry install --no-interaction
+poetry run python -m pytest -q
+```
+
+Run the same Pylint error checks used in CI:
+
+```sh
+poetry run python -m pylint --errors-only --extension-pkg-allow-list=saxonche procrustus_indexer
+```
+
+The extension allow-list lets Pylint inspect Saxon's native Python extension. CI currently checks
+errors only; existing style and warning diagnostics are not enforced.
+
+GitHub Actions runs independent unit-test and Pylint jobs on Python 3.13 for pushes and pull
+requests. The workflow can also be started manually from the Actions tab.

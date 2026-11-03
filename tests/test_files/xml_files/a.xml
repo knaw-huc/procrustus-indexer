@@ -1,0 +1,9 @@
+<ex:record xmlns:ex="urn:example" status="published">
+    <ex:id>record-1</ex:id>
+    <ex:title>XML indexing test</ex:title>
+    <ex:tags>
+        <ex:tag>first</ex:tag>
+        <ex:tag>second</ex:tag>
+    </ex:tags>
+    <ex:metadata>{"key": "value"}</ex:metadata>
+</ex:record>

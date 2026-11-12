@@ -29,9 +29,9 @@ class Parser(ABC):
         :return:
         """
 
-    def parse_file(self, file: IO) -> dict:
+    def parse_file(self, file: IO) -> dict | list[dict]:
         """
-        Process the given file and return a dict with the appropriate fields.
+        Process the given file and return one or more documents.
         :param file:
         :return:
         """

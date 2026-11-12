@@ -60,12 +60,17 @@ indexer.import_files(["json-files/a.json", "json-files/b.json"])
 The input format is selected in the TOML configuration. Use an XML configuration and XML files
 when building an XML indexer.
 
+JSON files may contain either a single record or a top-level array of records. Each array element
+is indexed separately, and configured ID and facet paths are evaluated relative to that element.
+An empty array produces no documents. `JsonParser.parse_file` returns a dictionary for a single
+record and a list of dictionaries for an array.
+
 ## TOML Configuration
 In order to use this indexer, you need to have a TOML file describing the
 required ES index fields, and where in the source files to find these.
 Here we will see how to configure this TOML file, and what options there are.
 
-Let's first consider this example configueration:
+Let's first consider this example configuration:
 
 ```toml
 [index]

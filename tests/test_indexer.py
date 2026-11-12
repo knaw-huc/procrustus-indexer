@@ -1,7 +1,7 @@
 import tomllib
-from unittest.mock import Mock, MagicMock, patch, call
+from unittest.mock import Mock, patch
+
 from procrustus_indexer.indexer import Indexer
-from procrustus_indexer.parsers import JsonParser
 
 
 def get_config(toml_file: str) -> dict:
@@ -319,10 +319,7 @@ def test_import_files_with_bulk_error():
         with patch('procrustus_indexer.indexer.bulk') as mock_bulk:
             mock_bulk.side_effect = BulkIndexError('error', [])
             # Should not raise
-            try:
-                indexer.import_files(['file1.json'])
-            except:
-                pass
+            indexer.import_files(['file1.json'])
             mock_bulk.assert_called_once()
 
 

@@ -43,14 +43,21 @@ class JsonParser(Parser):
         return None
 
 
-    def parse_file(self, file: IO) -> dict:
+    def parse_file(self, file: IO) -> dict | list[dict]:
         """
-        Parse a JSON file and return a dictionary with all parsed data.
+        Parse a JSON object or a top-level array of records.
         :param file:
         :return:
         """
         data = json.load(file)
+        if isinstance(data, list):
+            return [self.parse_record(record) for record in data]
+        return self.parse_record(data)
 
+    def parse_record(self, data) -> dict:
+        """
+        Extract the configured ID and facets from one JSON record.
+        """
         path_id = self.config['index']['id']['path']
         doc_id = self.resolve_path(data, path_id)
         doc = {'id': doc_id}

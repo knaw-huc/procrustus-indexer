@@ -175,12 +175,14 @@ class Indexer:
         # E: Extract from files
         docs = []
         for inf in files:
-            doc = {}
             with open(inf, encoding='utf-8') as f:
                 if not self.parser.should_process(f):
                     continue
-                doc = self.parser.parse_file(f)
-                docs.append(doc)
+                parsed = self.parser.parse_file(f)
+                if isinstance(parsed, list):
+                    docs.extend(parsed)
+                else:
+                    docs.append(parsed)
 
         # T: Apply transformations
         docs = (self.transform_document(doc) for doc in docs)

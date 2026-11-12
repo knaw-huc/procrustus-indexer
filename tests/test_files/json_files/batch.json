@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "First",
+    "tag": "label",
+    "value": 42,
+    "nested": {
+      "object": {
+        "value": 7
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Second",
+    "value": 0
+  }
+]

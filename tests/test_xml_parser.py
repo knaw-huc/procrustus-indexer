@@ -1,8 +1,12 @@
+from pathlib import Path
+
 from io import StringIO
 import tomllib
 
 from procrustus_indexer.parsers import XmlParser
 
+
+XML_FILES = Path("tests/test_files/xml_files")
 
 def get_config(toml_file: str) -> dict:
     config_path = f"tests/test_files/{toml_file}"
@@ -20,7 +24,7 @@ def test_create_xml_parser():
 def test_parse_xml():
     parser = XmlParser(get_config("test-xml.toml"))
 
-    with open("tests/test_files/xml_files/a.xml", encoding="utf-8") as f:
+    with open(XML_FILES / "a.xml", encoding="utf-8") as f:
         result = parser.parse_file(f)
 
     assert result == {
@@ -35,7 +39,7 @@ def test_parse_xml():
 def test_should_process_xml_and_rewind_file():
     parser = XmlParser(get_config("test-xml.toml"))
 
-    with open("tests/test_files/xml_files/a.xml", encoding="utf-8") as f:
+    with open(XML_FILES / "a.xml", encoding="utf-8") as f:
         assert parser.should_process(f) is True
         assert f.tell() == 0
 
